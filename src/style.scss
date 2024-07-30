@@ -1,0 +1,22 @@
+$primaryColor: #4527a4;
+
+.wp-block-b-blocks-music-player {
+	box-sizing: border-box;
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.bBlocksMusicPlayer {
+		display: inline-block;
+	}
+
+	.icon {
+		font-style: inherit;
+	}
+
+	img {
+		width: 100%;
+		max-width: 100%;
+	}
+}

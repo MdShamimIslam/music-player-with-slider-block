@@ -1,0 +1,41 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "b-blocks/music-player",
+	"version": "1.0.0",
+	"title": "Music Player",
+	"category": "widgets",
+	"description": "Add a customizable music player to your WordPress site. Upload audio, create playlists, and offer seamless listening for your visitors.",
+	"keywords": [
+		"music",
+		"player",
+		"music player",
+		"bplugins music player"
+	],
+	"textdomain": "b-blocks",
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"align": [
+			"wide",
+			"full"
+		],
+		"html": false
+	},
+	"example": {
+		"attributes": {}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./style-index.css",
+	"style": "file:./style-view.css",
+	"render": "file:./render.php",
+	"viewScript": [
+		"file:./view.js",
+		"react",
+		"react-dom"
+	]
+}
