@@ -256,25 +256,11 @@ __webpack_require__.r(__webpack_exports__);
 
 const iconColor = '#4527a4';
 const blockIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: 24,
-  height: 24,
-  viewBox: "0 0 20 20",
-  fill: iconColor
+  viewBox: "0 0 512 512",
+  fill: iconColor,
+  xmlns: "http://www.w3.org/2000/svg"
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-  fill: iconColor,
-  fillRule: "evenodd",
-  d: "M9.938 4.016a.146.146 0 00-.054.057L3.027 15.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 00.066-.017.163.163 0 00.055-.06.176.176 0 00-.003-.183L10.12 4.073a.146.146 0 00-.054-.057.13.13 0 00-.063-.016.13.13 0 00-.064.016zm1.043-.45a1.13 1.13 0 00-1.96 0L2.166 15.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L10.982 3.566z"
-}), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
-  fill: iconColor,
-  width: "2",
-  height: "2",
-  x: "9.002",
-  y: "13",
-  rx: "1"
-}), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-  fill: iconColor,
-  d: "M9.1 7.995a.905.905 0 111.8 0l-.35 3.507a.553.553 0 01-1.1 0L9.1 7.995z"
+  d: "M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7l0 72 0 264c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6L448 147 192 223.8 192 432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6L128 200l0-72c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"
 }));
 
 /***/ }),
@@ -370,7 +356,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"b-blocks/music-player","version":"1.0.0","title":"Music Player","category":"widgets","description":"Add a customizable music player to your WordPress site. Upload audio, create playlists, and offer seamless listening for your visitors.","keywords":["music","player","music player","bplugins music player"],"textdomain":"b-blocks","attributes":{"align":{"type":"string","default":""}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./style-index.css","style":"file:./style-view.css","render":"file:./render.php","viewScript":["file:./view.js","react","react-dom"]}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"mupb/music-player","version":"1.0.0","title":"Music Player","category":"widgets","description":"Add a customizable music player to your WordPress site. Upload audio, create playlists, and offer seamless listening for your visitors.","keywords":["music","player","music player","bplugins music player"],"textdomain":"b-blocks","attributes":{"align":{"type":"string","default":""}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./style-index.css","style":"file:./style-view.css","render":"file:./render.php","viewScript":["file:./view.js","react","react-dom"]}');
 
 /***/ })
 

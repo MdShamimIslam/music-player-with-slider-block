@@ -1,7 +1,7 @@
 import React from 'react'
 
 const MusicPlayer = () => {
-  return <>Music Player!!</>
+  return <><p>Music Player!!</p></>
   
 }
 

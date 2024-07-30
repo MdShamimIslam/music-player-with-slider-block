@@ -53,7 +53,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const MusicPlayer = () => {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, "Music Player!!");
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Music Player!!"));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MusicPlayer);
 
@@ -78,7 +78,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const musicPlayerEls = document.querySelectorAll('.wp-block-b-blocks-music-player');
+  const musicPlayerEls = document.querySelectorAll('.wp-block-mupb-music-player');
   musicPlayerEls.forEach(musicPlayerEl => {
     const attributes = JSON.parse(musicPlayerEl.dataset.attributes);
     (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(musicPlayerEl).render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Style__WEBPACK_IMPORTED_MODULE_3__["default"], {
