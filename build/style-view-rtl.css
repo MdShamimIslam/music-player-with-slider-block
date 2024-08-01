@@ -6,18 +6,80 @@
   border-radius: 10px;
 }
 
-.mainMusicPlayer {
+.removeBtn {
+  width: 112px;
+  background: rgba(221, 39, 3, 0.9058823529);
+  color: white;
+}
+
+.duplicateBtn {
+  width: 112px;
+  background: green;
+  color: white;
+}
+
+.removeBtn:hover {
+  width: 112px;
+  background: rgba(168, 5, 13, 0.9058823529);
+  color: white;
+}
+
+.duplicateBtn:hover {
+  width: 112px;
+  background: #349109;
+  color: white;
+}
+
+.thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.addMusic:hover {
+  background: #2ab77a;
+  color: white;
+  transition: 0.5s;
+}
+
+.removeAndDuplicateBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.mediaBtn {
+  background: #4527a4;
+  color: white;
+  height: 32px;
+  margin-top: 15px;
+  margin-right: -5px;
+}
+
+.addMusic {
+  background: #4527a4;
+  color: white;
+  transition: 0.5s;
+  width: 100%;
   display: flex;
   justify-content: center;
+  gap: 5px;
+}
+
+.mainMusicPlayer {
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0;
   flex-direction: column;
 }
 
 .swiper-wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   width: 100%;
   padding: 30px 10px 100px;
@@ -87,10 +149,11 @@
   border-radius: 20px;
 }
 
-.music-player h1 {
+.music-player-heading {
   font-size: 1.5rem;
   font-weight: 600;
-  line-height: 1.6;
+  margin-bottom: -5px;
+  color: white;
 }
 
 .music-player p {

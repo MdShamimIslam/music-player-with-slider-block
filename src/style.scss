@@ -6,26 +6,71 @@ $primary-clr: rgba(228, 228, 229, 1);
 	border-radius: 10px;
 }
 
-// @keyframes slidein {
-
-// 	0%,
-// 	100% {
-// 		background-position: 20% 0%;
-// 		background-size: 3400px;
-// 	}
-
-// 	50% {
-// 		background-position: 100% 0%;
-// 		background-size: 2400px;
-// 	}
-// }
-
+// general style start
+// create mixin
 @mixin alignMentDiv($gap) {
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
 	gap: $gap ;
 }
+@mixin musicBtn($bg){
+	background: $bg;
+	color: white;
+	transition: 0.5s
+}
+@mixin slideBtn($bg){
+	width: 112px;
+	background: $bg;
+	color: white;
+}
+@mixin slideHoverBtn($bg){
+	color: white;
+	background: $bg;
+	transition: 0.7s;
+}
+
+// use mixin property
+
+.removeBtn{
+	@include slideBtn(#dd2703e7);
+}
+.duplicateBtn{
+	@include slideBtn(green);
+}
+.removeBtn:hover{
+	@include slideBtn(#a8050de7);
+}
+.duplicateBtn:hover{
+	@include slideBtn(#349109);
+}
+.thumbnail{
+	@include alignMentDiv(0)
+}
+
+.addMusic:hover{
+	@include musicBtn(#2ab77a);
+}
+.removeAndDuplicateBtn{
+	@include alignMentDiv(5px)
+}
+.mediaBtn{
+	background: #4527a4;
+	color: white;
+	height: 32px;
+	margin-top: 15px;
+	margin-left: -5px;
+}
+.addMusic{
+	@include musicBtn(#4527a4);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+	
+	
+}
+// general style end
 
 .mainMusicPlayer {
 	@include alignMentDiv(0);
@@ -103,10 +148,11 @@ $primary-clr: rgba(228, 228, 229, 1);
 	border-radius: 20px;
 }
 
-.music-player h1 {
+.music-player-heading {
 	font-size: 1.5rem;
 	font-weight: 600;
-	line-height: 1.6;
+	margin-bottom: -5px;
+	color: white;
 }
 
 .music-player p {

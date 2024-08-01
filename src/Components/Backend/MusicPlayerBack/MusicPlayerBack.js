@@ -61,7 +61,7 @@ const MusicPlayerBack = ({ attributes, setAttributes }) => {
             </div>
 
             <div className="music-player">
-                <h3>{musics[currentMusicIndex].title}</h3>
+                <h2 className='music-player-heading'>{musics[currentMusicIndex].title}</h2>
                 <p>{musics[currentMusicIndex].name}</p>
                 <audio id="song" ref={audioRef} onTimeUpdate={updateProgress} onEnded={() => changeMusic('forward')}>
                     <source src={musics[currentMusicIndex].source} type="audio/mpeg" />

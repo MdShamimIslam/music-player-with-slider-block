@@ -57,3 +57,11 @@ export const musics = [
 		link: "https://www.youtube.com/watch?v=tCXGJQYZ9JA&ab_channel=TaylorSwiftVEVO"
 	},
 ];
+
+export const musicOptions = {
+	title: "Symphony",
+	name: "Clean Bandit ft. Zara Larsson",
+	source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
+	thumbnail: { url:"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d3ca28bf-e1b7-467e-a00b-c7785be8e397" },
+	link: "https://www.youtube.com/watch?v=aatr_2MstrI&ab_channel=CleanBandit"
+}
