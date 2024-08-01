@@ -5,7 +5,7 @@ import MusicPlayer from './Components/Frontend/MusicPlayer';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-	const musicPlayerEls = document.querySelectorAll('.wp-block-mupb-music-player');
+	const musicPlayerEls = document.querySelectorAll('.wp-block-mpws-music-player');
 	musicPlayerEls.forEach(musicPlayerEl => {
 		const attributes = JSON.parse(musicPlayerEl.dataset.attributes);
 

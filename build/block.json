@@ -1,22 +1,27 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mupb/music-player",
+  "name": "mpws/music-player",
   "version": "1.0.0",
-  "title": "Music Player",
+  "title": "Music Player with Slider",
   "category": "widgets",
-  "description": "Add a customizable music player to your WordPress site. Upload audio, create playlists, and offer seamless listening for your visitors.",
+  "description": "Add a customizable music player with an interactive slider to your WordPress posts and pages.",
   "keywords": [
     "music",
     "player",
     "music player",
-    "bplugins music player"
+    "music player",
+    "music slider"
   ],
-  "textdomain": "b-blocks",
+  "textdomain": "music-player",
   "attributes": {
     "align": {
       "type": "string",
       "default": ""
+    },
+    "currentMusicIndex": {
+      "type": "string",
+      "default": 0
     }
   },
   "supports": {

@@ -1,7 +1,7 @@
-=== Music Player Block ===
+=== Music Player with Slider Block ===
 Contributors:		bplugins
 Donate link:		https://gum.co/wpdonate/
-Tags:				music, player, music player, bplugins music player
+Tags:				music, player, music player, music player,music slider
 
 Requires at least:	6.3+
 Tested up to:		6.5.5
@@ -10,7 +10,7 @@ Requires PHP:		7.2
 License:			GPLv3 or later
 License URI:		http://www.gnu.org/licenses/gpl-3.0.html
 
-Enhance your website with our customizable Music Player block. Easily upload and manage audio files, create playlists, and provide a seamless listening experience for your visitors directly within your WordPress site.
+Add a dynamic music player to your WordPress site with an interactive slider. Customize audio playback and enhance user experience with seamless control and integration. Perfect for showcasing playlists, tracks, and audio content within posts and pages.
 
 == Description ==
 
@@ -20,13 +20,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 
 
-### Music Player Block Features
+### Music Player with Slider Block Features
 - **Feature 1**: Feature 1 description.
 
 
-= How to use Music Player Block =
-- First, install the Music Player Block plugin from the WordPress dashboard.
-- Add the Music Player Block from the block category called "widgets" in the Gutenberg editor.
+= How to use Music Player with Slider Block =
+- First, install the Music Player with Slider Block plugin from the WordPress dashboard.
+- Add the Music Player with Slider Block from the block category called "widgets" in the Gutenberg editor.
 - You can change block settings from the right-side settings sidebar.
 - Enjoy!
 
@@ -64,13 +64,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 3. Click on the **Test** to add the block
 
 ### Download & Upload:
-1. Download the **Music Player Block** plugin (*.zip file*)
+1. Download the **Music Player with Slider Block** plugin (*.zip file*)
 2. In your admin area, go to the Plugins menu and click on **Add New**
 3. Click on **Upload Plugin** and choose the **`test-block.zip`** file and click on **Install Now**
 4. Activate the plugin and Enjoy!
 
 ### Manually:
-1. Download and upload the **Music Player Block** plugin to the **`/wp-content/plugins/`** directory
+1. Download and upload the **Music Player with Slider Block** plugin to the **`/wp-content/plugins/`** directory
 2. Activate the plugin through the Plugins menu in WordPress
 
 

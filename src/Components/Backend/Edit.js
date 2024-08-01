@@ -2,6 +2,7 @@
 import { useBlockProps } from '@wordpress/block-editor';
 import Style from '../Common/Style';
 import Settings from './Settings/Settings';
+import MusicPlayerBack from './MusicPlayerBack/MusicPlayerBack';
 
 const Edit = props => {
 	const { attributes, setAttributes, clientId } = props;
@@ -15,7 +16,7 @@ const Edit = props => {
 			<Style attributes={attributes} id={`block-${clientId}`} />
 			{/* content */}
 			<div className='bBlocksMusicPlayer'>
-				<p> Music Player!!!</p>
+				<MusicPlayerBack attributes={attributes} setAttributes={setAttributes}/>
 			</div>
 		</div>
 	</>;

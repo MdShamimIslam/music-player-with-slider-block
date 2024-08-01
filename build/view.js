@@ -24,10 +24,8 @@ const Style = ({
     dangerouslySetInnerHTML: {
       __html: `
 
-				${blockSl} p {
-					color: green;
-					background-color: #ccc;
-					padding: 10px;
+				${blockSl} {
+					
 				}
 
 	    `
@@ -53,7 +51,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const MusicPlayer = () => {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Music Player!!"));
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, "Music Player!");
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MusicPlayer);
 
@@ -68,7 +66,7 @@ const MusicPlayer = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "../plugin-slug/node_modules/react-dom/client.js");
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 /* harmony import */ var _Components_Common_Style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components/Common/Style */ "./src/Components/Common/Style.js");
 /* harmony import */ var _Components_Frontend_MusicPlayer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Components/Frontend/MusicPlayer */ "./src/Components/Frontend/MusicPlayer.js");
@@ -78,7 +76,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const musicPlayerEls = document.querySelectorAll('.wp-block-mupb-music-player');
+  const musicPlayerEls = document.querySelectorAll('.wp-block-mpws-music-player');
   musicPlayerEls.forEach(musicPlayerEl => {
     const attributes = JSON.parse(musicPlayerEl.dataset.attributes);
     (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(musicPlayerEl).render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Style__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -107,10 +105,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../plugin-slug/node_modules/react-dom/client.js":
-/*!*******************************************************!*\
-  !*** ../plugin-slug/node_modules/react-dom/client.js ***!
-  \*******************************************************/
+/***/ "./node_modules/react-dom/client.js":
+/*!******************************************!*\
+  !*** ./node_modules/react-dom/client.js ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 

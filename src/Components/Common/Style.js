@@ -8,10 +8,8 @@ const Style = ({ id }) => {
 	return <style dangerouslySetInnerHTML={{
 		__html: `
 
-				${blockSl} p {
-					color: green;
-					background-color: #ccc;
-					padding: 10px;
+				${blockSl} {
+					
 				}
 
 	    `}} />;
