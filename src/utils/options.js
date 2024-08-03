@@ -7,19 +7,20 @@ export const generalStyleTabs = [
 
 export const musics = [
 	{
-		title: "Symphony",
-		name: "Clean Bandit ft. Zara Larsson",
-		source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
-		img: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d3ca28bf-e1b7-467e-a00b-c7785be8e397",
-		link: "https://www.youtube.com/watch?v=aatr_2MstrI&ab_channel=CleanBandit"
-	},
-	{
 		title: "Pawn It All",
 		name: "Alicia Keys",
 		source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
 		img: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc",
 		link: "https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"
 	},
+	{
+		title: "Symphony",
+		name: "Clean Bandit ft. Zara Larsson",
+		source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
+		img: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d3ca28bf-e1b7-467e-a00b-c7785be8e397",
+		link: "https://www.youtube.com/watch?v=aatr_2MstrI&ab_channel=CleanBandit"
+	},
+	
 	{
 		title: "Seni Dert Etmeler",
 		name: "Madrigal",
@@ -58,10 +59,10 @@ export const musics = [
 	},
 ];
 
-export const musicOptions = {
-	title: "Symphony",
-	name: "Clean Bandit ft. Zara Larsson",
-	source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
-	thumbnail: { url:"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d3ca28bf-e1b7-467e-a00b-c7785be8e397" },
-	link: "https://www.youtube.com/watch?v=aatr_2MstrI&ab_channel=CleanBandit"
+export const musicOptions ={
+	title: "Pawn It All",
+	name: "Alicia Keys",
+	source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
+	thumbnail:{url: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"},
+	link: "https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"
 }

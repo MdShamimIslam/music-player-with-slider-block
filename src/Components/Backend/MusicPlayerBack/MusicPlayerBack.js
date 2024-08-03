@@ -1,14 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { FaBackward, FaForward, FaPlay, FaPause } from '../../../utils/icons'
+import React, { useState } from 'react'
 import { musics } from '../../../utils/options';
+import { FaBackward, FaForward, FaPause, FaPlay } from '../../../utils/icons';
 
-const MusicPlayerBack = ({ attributes, setAttributes }) => {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const { currentMusicIndex } = attributes;
-    const audioRef = useRef(null);
+
+const MusicPlayerBack = ({ audioRef, isPlaying, setIsPlaying, activeIndex, setActiveIndex, swiperRef }) => {
     const [progress, setProgress] = useState(0);
 
-    const togglePlayPause = () => {
+    const playPauseMusic = () => {
         const audio = audioRef.current;
         if (audio.paused) {
             audio.play();
@@ -21,18 +19,22 @@ const MusicPlayerBack = ({ attributes, setAttributes }) => {
 
     const changeMusic = (direction) => {
         const audio = audioRef.current;
-        let newIndex = currentMusicIndex;
+        let newIndex = activeIndex;
 
-        if (direction === "forward") {
-            newIndex = (currentMusicIndex + 1) % musics.length;
-        } else if (direction === "backward") {
-            newIndex = (currentMusicIndex - 1 + musics.length) % musics.length;
+        if (direction === 'forward') {
+            newIndex = (activeIndex + 1) % musics.length;
+        } else if (direction === 'backward') {
+            newIndex = (activeIndex - 1 + musics.length) % musics.length;
         }
-
-        setAttributes({ currentMusicIndex: newIndex });
+        setActiveIndex(newIndex);
         audio.src = musics[newIndex].source;
         if (isPlaying) {
             audio.play();
+        }
+
+        // Use Swiper ref to navigate slides
+        if (swiperRef.current) {
+            swiperRef.current.slideTo(newIndex);
         }
     };
 
@@ -50,33 +52,36 @@ const MusicPlayerBack = ({ attributes, setAttributes }) => {
         audio.currentTime = seekTime;
     };
 
-    return <>
-        <div className='mainMusicPlayer'>
-            <div className="swiper-wrapper">
-                {
-                    musics.map((music, idx) => <div key={idx} className="swiper-slide">
-                        <img src={music.img} />
-                    </div>)
-                }
-            </div>
+    return <div className="music-player">
+        <h1>{musics[activeIndex].title}</h1>
+        <p>{musics[activeIndex].name}</p>
 
-            <div className="music-player">
-                <h2 className='music-player-heading'>{musics[currentMusicIndex].title}</h2>
-                <p>{musics[currentMusicIndex].name}</p>
-                <audio id="song" ref={audioRef} onTimeUpdate={updateProgress} onEnded={() => changeMusic('forward')}>
-                    <source src={musics[currentMusicIndex].source} type="audio/mpeg" />
-                </audio>
-                <input value={progress ? progress : 0} onChange={handleSeek} defaultValue="0" id="progress" type="range" />
-                <div className="controls">
-                    <button className="backward" onClick={() => changeMusic('backward')}> <FaBackward /></button>
-                    <button className="play-pause-btn" onClick={togglePlayPause}>
-                        {isPlaying ? <FaPause id="controlIcon" /> : <FaPlay id="controlIcon" />}
-                    </button>
-                    <button className="forward" onClick={() => changeMusic('forward')}> <FaForward /></button>
-                </div>
-            </div>
+        <audio ref={audioRef} onTimeUpdate={updateProgress} onEnded={() => changeMusic('forward')} >
+            <source src={musics[activeIndex].source} type="audio/mpeg" />
+        </audio>
+        
+        <input
+            type="range"
+            value={progress ? progress : 0}
+            id="progress"
+            onChange={handleSeek}
+            min="0"
+            max="100"
+            step="0.1"
+        />
+
+        <div className="controls">
+            <button className="backward" onClick={() => { changeMusic('backward') }} >
+                <FaBackward />
+            </button>
+            <button onClick={playPauseMusic}>
+                {isPlaying ? <FaPause id="controlIcon" /> : <FaPlay id="controlIcon" />}
+            </button>
+            <button className="forward" onClick={() => { changeMusic('forward') }} >
+                <FaForward />
+            </button>
         </div>
-    </>
+    </div>
 }
 
 export default MusicPlayerBack
