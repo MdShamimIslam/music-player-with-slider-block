@@ -4,10 +4,10 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import { A11y, EffectCoverflow } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { musics } from '../../../utils/options';
 import { FaYoutube } from '../../../utils/icons';
 
-const SwiperSlider = forwardRef(({ playTrack }, ref) => {
+const SwiperSlider = forwardRef(({ playTrack, attributes }, ref) => {
+  const { musics, options } = attributes;
   const [activeSlide, setActiveSlide] = useState(0);
   const swiperRef = useRef(null);
 
@@ -20,37 +20,38 @@ const SwiperSlider = forwardRef(({ playTrack }, ref) => {
   }));
 
   return <div className="swiper">
-        <Swiper
-          modules={[EffectCoverflow, A11y]}
-          effect={'coverflow'}
-          grabCursor={true}
-          centeredSlides={true}
-          onSwiper={(swiper) => { swiperRef.current = swiper;}}
-          onActiveIndexChange={(val) => { setActiveSlide(val.activeIndex); playTrack(val.activeIndex) }}
-          coverflowEffect={{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          spaceBetween={50}
-          slidesPerView={5}
-        >
-          {musics.map((music, index) => (
-            <SwiperSlide key={index}>
-              <div className={`${activeSlide === index ? 'activeSlide' : ''}`}>
-                <img src={music.img} alt={music.title} />
-                <div className="overlay">
-                  <a href={music.link} target="_blank" rel="noopener noreferrer">
-                    <FaYoutube/>
-                  </a>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+    <Swiper
+      modules={[EffectCoverflow, A11y]}
+      effect={'coverflow'}
+      grabCursor={true}
+      centeredSlides={true}
+      onSwiper={(swiper) => { swiperRef.current = swiper; }}
+      onActiveIndexChange={(val) => { setActiveSlide(val.activeIndex); playTrack(val.activeIndex) }}
+      coverflowEffect={{
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      }}
+      spaceBetween={50}
+      slidesPerView={5}
+    >
+      {musics.map((music, index) => (
+        <SwiperSlide key={index}>
+          <div className={`${activeSlide === index ? 'activeSlide' : ''}`}>
+            <img src={music.thumbnail.url} alt={music.title} />
+            {activeSlide === index && <div className="overlay">
+              <span onClick={() => music.link ? window.open(`${music.link}`, options.newTab ? '_blank' : '_self') : {}} >
+                <FaYoutube style={{ color: "red", cursor: "pointer", width: "20px" }} className='youtubeIcon' />
+              </span>
+            </div>
+            }
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  </div>
 });
 
 export default SwiperSlider;

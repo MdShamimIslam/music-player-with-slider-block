@@ -35,17 +35,24 @@ const Edit = props => {
 		<div {...useBlockProps()}>
 
 			<Style attributes={attributes} id={`block-${clientId}`} />
-		
+
 			<div className="bBlocksMusicPlayer">
-				<SwiperSlider ref={swiperRef} playTrack={playTrack} />
+				
+				<SwiperSlider
+					ref={swiperRef}
+					playTrack={playTrack}
+					attributes={attributes}
+				/>
 
 				<MusicPlayerBack
-				audioRef={audioRef}
-				isPlaying={isPlaying}
-				setIsPlaying={setIsPlaying}
-				activeIndex={activeIndex}
-				setActiveIndex={setActiveIndex}
-				swiperRef={swiperRef}
+					attributes={attributes}
+					setAttributes={setAttributes}
+					audioRef={audioRef}
+					isPlaying={isPlaying}
+					setIsPlaying={setIsPlaying}
+					activeIndex={activeIndex}
+					setActiveIndex={setActiveIndex}
+					swiperRef={swiperRef}
 				/>
 
 			</div>

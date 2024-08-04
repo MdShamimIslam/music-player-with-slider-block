@@ -115,8 +115,11 @@ const Edit = props => {
     className: "bBlocksMusicPlayer"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_SwiperSlider_SwiperSlider__WEBPACK_IMPORTED_MODULE_5__["default"], {
     ref: swiperRef,
-    playTrack: playTrack
+    playTrack: playTrack,
+    attributes: attributes
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_MusicPlayerBack_MusicPlayerBack__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    attributes: attributes,
+    setAttributes: setAttributes,
     audioRef: audioRef,
     isPlaying: isPlaying,
     setIsPlaying: setIsPlaying,
@@ -141,8 +144,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/options */ "./src/utils/options.js");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _utils_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils/icons */ "./src/utils/icons.js");
+/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/functions */ "./src/utils/functions.js");
+
 
 
 
@@ -153,8 +159,13 @@ const MusicPlayerBack = ({
   setIsPlaying,
   activeIndex,
   setActiveIndex,
-  swiperRef
+  swiperRef,
+  attributes,
+  setAttributes
 }) => {
+  const {
+    musics
+  } = attributes;
   const [progress, setProgress] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   const playPauseMusic = () => {
     const audio = audioRef.current;
@@ -170,12 +181,12 @@ const MusicPlayerBack = ({
     const audio = audioRef.current;
     let newIndex = activeIndex;
     if (direction === 'forward') {
-      newIndex = (activeIndex + 1) % _utils_options__WEBPACK_IMPORTED_MODULE_1__.musics.length;
+      newIndex = (activeIndex + 1) % musics.length;
     } else if (direction === 'backward') {
-      newIndex = (activeIndex - 1 + _utils_options__WEBPACK_IMPORTED_MODULE_1__.musics.length) % _utils_options__WEBPACK_IMPORTED_MODULE_1__.musics.length;
+      newIndex = (activeIndex - 1 + musics.length) % musics.length;
     }
     setActiveIndex(newIndex);
-    audio.src = _utils_options__WEBPACK_IMPORTED_MODULE_1__.musics[newIndex].source;
+    audio.src = musics[newIndex].source;
     if (isPlaying) {
       audio.play();
     }
@@ -199,12 +210,22 @@ const MusicPlayerBack = ({
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "music-player"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, _utils_options__WEBPACK_IMPORTED_MODULE_1__.musics[activeIndex].title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, _utils_options__WEBPACK_IMPORTED_MODULE_1__.musics[activeIndex].name), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("audio", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    tagName: "h1",
+    value: musics[activeIndex].title,
+    onChange: v => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateMusic)(setAttributes, setActiveIndex, musics, activeIndex, 'title', v),
+    placeholder: "Add Music Title..."
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    tagName: "p",
+    value: musics[activeIndex].name,
+    onChange: v => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateMusic)(setAttributes, setActiveIndex, musics, activeIndex, 'name', v),
+    placeholder: "Add Music Name..."
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("audio", {
     ref: audioRef,
     onTimeUpdate: updateProgress,
     onEnded: () => changeMusic('forward')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
-    src: _utils_options__WEBPACK_IMPORTED_MODULE_1__.musics[activeIndex].source,
+    src: musics[activeIndex].source,
     type: "audio/mpeg"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "range",
@@ -451,9 +472,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_css_pagination__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! swiper/css/pagination */ "./node_modules/swiper/modules/pagination.css");
 /* harmony import */ var swiper_modules__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper/modules */ "./node_modules/swiper/modules/index.mjs");
 /* harmony import */ var swiper_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper/react */ "./node_modules/swiper/swiper-react.mjs");
-/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../utils/options */ "./src/utils/options.js");
-/* harmony import */ var _utils_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../utils/icons */ "./src/utils/icons.js");
-
+/* harmony import */ var _utils_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../utils/icons */ "./src/utils/icons.js");
 
 
 
@@ -463,8 +482,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const SwiperSlider = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(({
-  playTrack
+  playTrack,
+  attributes
 }, ref) => {
+  const {
+    musics,
+    options
+  } = attributes;
   const [activeSlide, setActiveSlide] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   const swiperRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useImperativeHandle)(ref, () => ({
@@ -497,20 +521,25 @@ const SwiperSlider = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(({
     },
     spaceBetween: 50,
     slidesPerView: 5
-  }, _utils_options__WEBPACK_IMPORTED_MODULE_6__.musics.map((music, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(swiper_react__WEBPACK_IMPORTED_MODULE_5__.SwiperSlide, {
+  }, musics.map((music, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(swiper_react__WEBPACK_IMPORTED_MODULE_5__.SwiperSlide, {
     key: index
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `${activeSlide === index ? 'activeSlide' : ''}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: music.img,
+    src: music.thumbnail.url,
     alt: music.title
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), activeSlide === index && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "overlay"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: music.link,
-    target: "_blank",
-    rel: "noopener noreferrer"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_7__.FaYoutube, null))))))));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    onClick: () => music.link ? window.open(`${music.link}`, options.newTab ? '_blank' : '_self') : {}
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_6__.FaYoutube, {
+    style: {
+      color: "red",
+      cursor: "pointer",
+      width: "20px"
+    },
+    className: "youtubeIcon"
+  }))))))));
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SwiperSlider);
 
@@ -766,43 +795,57 @@ const musics = [{
   title: "Pawn It All",
   name: "Alicia Keys",
   source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
-  img: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc",
+  thumbnail: {
+    url: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"
+  },
   link: "https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"
 }, {
   title: "Symphony",
   name: "Clean Bandit ft. Zara Larsson",
   source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
-  img: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d3ca28bf-e1b7-467e-a00b-c7785be8e397",
+  thumbnail: {
+    url: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d3ca28bf-e1b7-467e-a00b-c7785be8e397"
+  },
   link: "https://www.youtube.com/watch?v=aatr_2MstrI&ab_channel=CleanBandit"
 }, {
   title: "Seni Dert Etmeler",
   name: "Madrigal",
   source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Madrigal-Seni-Dert-Etmeler.mp3",
-  img: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/abaa23bd-8c93-4219-a3ef-0d0cb6f12566",
+  thumbnail: {
+    url: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/abaa23bd-8c93-4219-a3ef-0d0cb6f12566"
+  },
   link: "https://www.youtube.com/watch?v=LgsaD-vNJ9M"
 }, {
   title: "Instant Crush",
   name: "Daft Punk ft. Julian Casablancas",
   source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Daft-Punk-Instant-Crush.mp3",
-  img: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/bd9bcc80-a9ab-4d54-a460-ffdb77f22a72",
+  thumbnail: {
+    url: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/bd9bcc80-a9ab-4d54-a460-ffdb77f22a72"
+  },
   link: "https://www.youtube.com/watch?v=a5uQMwRMHcs&ab_channel=DaftPunkVEVO"
 }, {
   title: "As It Was",
   name: "Harry Styles",
   source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Harry-Styles-As-It-Was.mp3",
-  img: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/18bc2436-740b-44c4-9dd8-fd7be51a07ad",
+  thumbnail: {
+    url: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/18bc2436-740b-44c4-9dd8-fd7be51a07ad"
+  },
   link: "https://www.youtube.com/watch?v=H5v3kku4y6Q&ab_channel=HarryStylesVEVO"
 }, {
   title: "Physical",
   name: "Dua Lipa",
   source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Dua-Lipa-Physical.mp3",
-  img: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/4c5c1727-8b32-48c1-91de-b0496ccf10f6",
+  thumbnail: {
+    url: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/4c5c1727-8b32-48c1-91de-b0496ccf10f6"
+  },
   link: "https://www.youtube.com/watch?v=9HDEHj2yzew&ab_channel=DuaLipa"
 }, {
   title: "Delicate",
   name: "Taylor Swift",
   source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Taylor-Swift-Delicate.mp3",
-  img: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/23e440e5-a0fa-4a85-8175-bcc485a20ee6",
+  thumbnail: {
+    url: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/23e440e5-a0fa-4a85-8175-bcc485a20ee6"
+  },
   link: "https://www.youtube.com/watch?v=tCXGJQYZ9JA&ab_channel=TaylorSwiftVEVO"
 }];
 const musicOptions = {

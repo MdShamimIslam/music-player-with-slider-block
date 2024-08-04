@@ -27,7 +27,9 @@ $primary-clr: rgba(228, 228, 229, 1);
 		animation: slideIn 120s forwards infinite alternate;
 		padding: 15px 8px;
 		display: inline-block;
-	}
+		height:inherit;
+		overflow: hidden;
+		}
 
 	.bBlocksMusicPlayer {
 		

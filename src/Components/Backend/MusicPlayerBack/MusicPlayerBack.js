@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { musics } from '../../../utils/options';
+import { RichText } from '@wordpress/block-editor';
 import { FaBackward, FaForward, FaPause, FaPlay } from '../../../utils/icons';
+import { updateMusic } from '../../../utils/functions';
 
 
-const MusicPlayerBack = ({ audioRef, isPlaying, setIsPlaying, activeIndex, setActiveIndex, swiperRef }) => {
+const MusicPlayerBack = ({ audioRef, isPlaying, setIsPlaying, activeIndex, setActiveIndex, swiperRef,attributes, setAttributes }) => {
+    const { musics } = attributes;
     const [progress, setProgress] = useState(0);
 
     const playPauseMusic = () => {
@@ -53,13 +55,23 @@ const MusicPlayerBack = ({ audioRef, isPlaying, setIsPlaying, activeIndex, setAc
     };
 
     return <div className="music-player">
-        <h1>{musics[activeIndex].title}</h1>
-        <p>{musics[activeIndex].name}</p>
+        <RichText
+            tagName="h1"
+            value={musics[activeIndex].title}
+            onChange={(v) => updateMusic(setAttributes, setActiveIndex, musics, activeIndex, 'title', v)}
+            placeholder="Add Music Title..."
+        />
+        <RichText
+            tagName="p"
+            value={musics[activeIndex].name}
+            onChange={(v) => updateMusic(setAttributes, setActiveIndex, musics, activeIndex, 'name', v)}
+            placeholder="Add Music Name..."
+        />
 
         <audio ref={audioRef} onTimeUpdate={updateProgress} onEnded={() => changeMusic('forward')} >
             <source src={musics[activeIndex].source} type="audio/mpeg" />
         </audio>
-        
+
         <input
             type="range"
             value={progress ? progress : 0}

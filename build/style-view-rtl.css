@@ -68,6 +68,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+@keyframes slideIn {
+  0%, 100% {
+    background-position: 80% 0%;
+    background-size: 3400px;
+  }
+  50% {
+    background-position: 0% 0%;
+    background-size: 2400px;
+  }
+}
 .wp-block-mpws-music-player .bBlocksMusicPlayer {
   position: relative;
   display: flex;
@@ -82,15 +92,16 @@
   animation: slideIn 120s forwards infinite alternate;
   padding: 15px 8px;
   display: inline-block;
+  height: inherit;
+  overflow: hidden;
 }
 .wp-block-mpws-music-player .bBlocksMusicPlayer .swiper {
   width: 100%;
   padding: 40px 0 100px;
-  overflow: hidden;
 }
 .wp-block-mpws-music-player .bBlocksMusicPlayer .swiper-wrapper {
   position: relative;
-  width: 200%;
+  width: 100%;
   height: 100%;
   z-index: 1;
   display: flex;
