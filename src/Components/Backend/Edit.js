@@ -6,9 +6,10 @@ import Settings from './Settings/Settings';
 import SwiperSlider from './SwiperSlider/SwiperSlider';
 import { musics } from '../../utils/options';
 import MusicPlayerBack from './MusicPlayerBack/MusicPlayerBack';
+import { withSelect } from '@wordpress/data';
 
 const Edit = props => {
-	const { attributes, setAttributes, clientId, isSelected } = props;
+	const { attributes, setAttributes, clientId, isSelected,device } = props;
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [isPlaying, setIsPlaying] = useState(false);
 	const audioRef = useRef(null);
@@ -27,14 +28,14 @@ const Edit = props => {
 
 	return <>
 		<Settings
-			{...{ attributes, setAttributes }}
+			{...{ attributes, setAttributes,device }}
 			activeIndex={activeIndex}
 			setActiveIndex={setActiveIndex}
 		/>
 
 		<div {...useBlockProps()}>
 
-			<Style attributes={attributes} id={`block-${clientId}`} />
+			<Style attributes={attributes} device={device} id={`block-${clientId}`} />
 
 			<div className="bBlocksMusicPlayer">
 				
@@ -59,4 +60,9 @@ const Edit = props => {
 		</div>
 	</>;
 }
-export default Edit;
+
+export default withSelect((select) => {
+	return {
+		device: select('core/edit-post').__experimentalGetPreviewDeviceType()?.toLowerCase()
+	}
+})(Edit);

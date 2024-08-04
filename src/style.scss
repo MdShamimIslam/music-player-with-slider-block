@@ -2,6 +2,7 @@ $primaryColor: #4527a4;
 $primary-clr: rgba(228, 228, 229, 1);
 
 @use '../custom-scss/general';
+@use '../custom-scss/settingStyle';
 
 .wp-block-mpws-music-player {
 	* {

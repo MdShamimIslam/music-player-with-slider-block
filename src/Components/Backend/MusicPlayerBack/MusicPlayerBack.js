@@ -7,6 +7,8 @@ import { updateMusic } from '../../../utils/functions';
 const MusicPlayerBack = ({ audioRef, isPlaying, setIsPlaying, activeIndex, setActiveIndex, swiperRef,attributes, setAttributes }) => {
     const { musics } = attributes;
     const [progress, setProgress] = useState(0);
+    
+    
 
     const playPauseMusic = () => {
         const audio = audioRef.current;

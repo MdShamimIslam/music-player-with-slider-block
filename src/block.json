@@ -6,29 +6,71 @@
 	"title": "Music Player with Slider",
 	"category": "widgets",
 	"description": "Add a customizable music player with an interactive slider to your WordPress posts and pages.",
-	"keywords": ["music","player","music player","music player","music slider"],
+	"keywords": [
+		"music",
+		"player",
+		"music player",
+		"music player",
+		"music slider"
+	],
 	"textdomain": "music-player",
 	"attributes": {
 		"align": {
 			"type": "string",
 			"default": ""
-	},
-		"musics":{
-			"type":"array",
-			"default":[
+		},
+		"musics": {
+			"type": "array",
+			"default": [
 				{
 					"title": "Pawn It All",
 					"name": "Alicia Keys",
 					"source": "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
-					"thumbnail":{"url": "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"},
+					"thumbnail": {
+						"url": "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"
+					},
 					"link": "https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"
 				}
 			]
 		},
-		"options":{
-			"type":"object",
-			"default":{
-				"newTab":true
+		"options": {
+			"type": "object",
+			"default": {
+				"newTab": true
+			}
+		},
+		"style": {
+			"type": "object",
+			"default": {
+				"rangeInput": {
+					"width": {
+						"desktop": "100%",
+						"tablet": "100%",
+						"mobile": "100%"
+					},
+					"height": {
+						"desktop": "7px",
+						"tablet": "6px",
+						"mobile": "6px"
+					},
+					"margin": {
+						"desktop": "",
+						"tablet": "",
+						"mobile": ""
+					},
+					"radius": 4,
+					"bg": "#FFFFFF5E"
+				},
+				"rangeThumb": {
+					"thumbWidth": {
+						"desktop": "16px",
+						"tablet": "15px",
+						"mobile": "14px"
+					},
+					"thumbBg": "rgba(89, 26, 151, 0.9)",
+					"thumbShadow": [],
+					"thumbOutline": {"radius":"50%"}
+				}
 			}
 		}
 	},

@@ -38,6 +38,42 @@
       "default": {
         "newTab": true
       }
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "rangeInput": {
+          "width": {
+            "desktop": "100%",
+            "tablet": "100%",
+            "mobile": "100%"
+          },
+          "height": {
+            "desktop": "7px",
+            "tablet": "6px",
+            "mobile": "6px"
+          },
+          "margin": {
+            "desktop": "",
+            "tablet": "",
+            "mobile": ""
+          },
+          "radius": 4,
+          "bg": "#FFFFFF5E"
+        },
+        "rangeThumb": {
+          "thumbWidth": {
+            "desktop": "16px",
+            "tablet": "15px",
+            "mobile": "14px"
+          },
+          "thumbBg": "rgba(89, 26, 151, 0.9)",
+          "thumbShadow": [],
+          "thumbOutline": {
+            "radius": "50%"
+          }
+        }
+      }
     }
   },
   "supports": {
