@@ -36,12 +36,23 @@
 		"options": {
 			"type": "object",
 			"default": {
-				"newTab": true
+				"newTab": true,
+				"textSl":"title",
+				"rangeSl":"input"
 			}
 		},
 		"style": {
 			"type": "object",
 			"default": {
+				"musicTitle":{
+					"color":"#fff",
+					"typo":{"fontSize": 30}
+				},
+				"musicName":{
+					"color":"#ddd",
+					"opacity":0.6,
+					"typo":{"fontSize": 20}
+				},
 				"rangeInput": {
 					"width": {
 						"desktop": "100%",
@@ -69,7 +80,7 @@
 					},
 					"thumbBg": "rgba(89, 26, 151, 0.9)",
 					"thumbShadow": [],
-					"thumbOutline": {"radius":"50%"}
+					"thumbOutline": {"width":"4px","style":"solid", "color":"white", "radius":"50%"}
 				}
 			}
 		}

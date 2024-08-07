@@ -166,18 +166,6 @@
   border-radius: 20px;
   margin-top: -115px;
 }
-.wp-block-mpws-music-player .bBlocksMusicPlayer .music-player h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1.6;
-  color: #fff;
-}
-.wp-block-mpws-music-player .bBlocksMusicPlayer .music-player p {
-  font-size: 1rem;
-  font-weight: 400;
-  opacity: 0.6;
-  color: #ddd;
-}
 .wp-block-mpws-music-player .bBlocksMusicPlayer #progress {
   -moz-appearance: none;
        appearance: none;

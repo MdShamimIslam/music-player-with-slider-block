@@ -231,6 +231,8 @@ const Style = ({
     style
   } = attributes;
   const {
+    musicTitle,
+    musicName,
     rangeInput,
     rangeThumb
   } = style;
@@ -250,11 +252,27 @@ const Style = ({
   const mainSl = `#${id}`;
   const blockSl = `${mainSl} .bBlocksMusicPlayer`;
   const musicPlayerSl = `${blockSl} .music-player`;
+  const musicTitleSl = `${musicPlayerSl} .title`;
+  const musicNameSl = `${musicPlayerSl} .name`;
   const rangeInputSl = `${musicPlayerSl} #progress`;
   const rangeThumbSl = `${rangeInputSl}::-webkit-slider-thumb`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
+				${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)('', musicTitle.typo)?.googleFontLink}
+        		${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(musicTitleSl, musicTitle.typo)?.styles}
+
+				${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)('', musicName.typo)?.googleFontLink}
+        		${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(musicNameSl, musicName.typo)?.styles}
+
+				${musicTitleSl} {
+					color:${musicTitle.color};
+				}
+
+				${musicNameSl} {
+					color:${musicName.color};
+					opacity:${musicName.opacity};
+				}
 
 				${rangeInputSl} {
 					width:${width[device]};
@@ -263,6 +281,7 @@ const Style = ({
 					border-radius:${radius}px;
 					margin: ${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(margin[device])};
 				}
+
 				${rangeThumbSl} {
 					background:${thumbBg};
 					width:${thumbWidth[device]};

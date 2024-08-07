@@ -11097,11 +11097,13 @@ const MusicPlayerBack = ({
     className: "music-player"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "h1",
+    className: "title",
     value: musics[activeIndex].title,
     onChange: v => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateMusic)(setAttributes, setActiveIndex, musics, activeIndex, 'title', v),
     placeholder: "Add Music Title..."
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "p",
+    className: "name",
     value: musics[activeIndex].name,
     onChange: v => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateMusic)(setAttributes, setActiveIndex, musics, activeIndex, 'name', v),
     placeholder: "Add Music Name..."
@@ -11348,6 +11350,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Device_Device__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../Components/Device/Device */ "../Components/Device/Device.js");
 /* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/functions */ "./src/utils/functions.js");
 /* harmony import */ var _BBoxControl_BBoxControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../BBoxControl/BBoxControl */ "./src/Components/BBoxControl/BBoxControl.js");
+/* harmony import */ var _Panel_Tab_Tab__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../Panel/Tab/Tab */ "./src/Components/Panel/Tab/Tab.js");
+
 
 
 
@@ -11361,9 +11365,16 @@ const Style = ({
   device
 }) => {
   const {
-    style
+    style,
+    options
   } = attributes;
   const {
+    textSl,
+    rangeSl
+  } = options;
+  const {
+    musicTitle,
+    musicName,
     rangeInput,
     rangeThumb
   } = style;
@@ -11382,12 +11393,70 @@ const Style = ({
   } = rangeThumb;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Music Swiper', 'music-player')
-  }, "Music Swiper Style ..."), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Music Slider', 'music-player')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Panel_Tab_Tab__WEBPACK_IMPORTED_MODULE_7__.Tab, {
+    options: ["active music", "overlay"],
+    value: textSl,
+    onChange: v => setAttributes({
+      options: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(options, v, "textSl")
+    })
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Range Input', 'music-player'),
-    initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BColor, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Music Player', 'music-player')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Panel_Tab_Tab__WEBPACK_IMPORTED_MODULE_7__.Tab, {
+    options: ["title", "name"],
+    value: textSl,
+    onChange: v => setAttributes({
+      options: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(options, v, "textSl")
+    })
+  }), textSl === 'title' ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BColor, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color', 'music-player'),
+    value: musicTitle.color,
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'musicTitle', "color")
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Typography, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Typography', 'music-player'),
+    value: musicTitle.typo,
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'musicTitle', "typo")
+    }),
+    defaults: {
+      fontSize: 30
+    }
+  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BColor, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color', 'music-player'),
+    value: musicName.color,
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'musicName', "color")
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+    className: "mt5",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Opacity', 'music-player'),
+    value: musicName.opacity,
+    allowReset: true,
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'musicName', "opacity")
+    }),
+    min: 0,
+    max: 1,
+    step: 0.1
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Typography, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Typography', 'music-player'),
+    value: musicName.typo,
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'musicName', "typo")
+    }),
+    defaults: {
+      fontSize: 20
+    }
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Panel_Tab_Tab__WEBPACK_IMPORTED_MODULE_7__.Tab, {
+    options: ["Input", "Thumb"],
+    value: rangeSl,
+    onChange: v => setAttributes({
+      options: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(options, v, "rangeSl")
+    })
+  }), rangeSl === 'input' ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BColor, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background', 'music-player'),
     value: bg,
     onChange: v => setAttributes({
@@ -11403,6 +11472,7 @@ const Style = ({
     onChange: v => setAttributes({
       style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'rangeInput', 'height', device)
     })
+    // onChange={(v) => setAttributes({ style: produce(style, draft => { draft.margin[device] = v }) })}
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Margin', 'music-player')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Device_Device__WEBPACK_IMPORTED_MODULE_4__.Device, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_BBoxControl_BBoxControl__WEBPACK_IMPORTED_MODULE_6__.BBoxControl, {
     label: "",
     values: margin[device],
@@ -11418,11 +11488,7 @@ const Style = ({
     }),
     min: 0,
     max: 20
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Range Thump', 'music-player'),
-    initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BColor, {
+  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BColor, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background', 'music-player'),
     value: thumbBg,
     onChange: v => setAttributes({
@@ -11449,7 +11515,7 @@ const Style = ({
     defaults: {
       radius: "50%"
     }
-  })));
+  }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
 
@@ -11571,6 +11637,8 @@ const Style = ({
     style
   } = attributes;
   const {
+    musicTitle,
+    musicName,
     rangeInput,
     rangeThumb
   } = style;
@@ -11590,11 +11658,27 @@ const Style = ({
   const mainSl = `#${id}`;
   const blockSl = `${mainSl} .bBlocksMusicPlayer`;
   const musicPlayerSl = `${blockSl} .music-player`;
+  const musicTitleSl = `${musicPlayerSl} .title`;
+  const musicNameSl = `${musicPlayerSl} .name`;
   const rangeInputSl = `${musicPlayerSl} #progress`;
   const rangeThumbSl = `${rangeInputSl}::-webkit-slider-thumb`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
+				${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)('', musicTitle.typo)?.googleFontLink}
+        		${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(musicTitleSl, musicTitle.typo)?.styles}
+
+				${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)('', musicName.typo)?.googleFontLink}
+        		${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(musicNameSl, musicName.typo)?.styles}
+
+				${musicTitleSl} {
+					color:${musicTitle.color};
+				}
+
+				${musicNameSl} {
+					color:${musicName.color};
+					opacity:${musicName.opacity};
+				}
 
 				${rangeInputSl} {
 					width:${width[device]};
@@ -11603,6 +11687,7 @@ const Style = ({
 					border-radius:${radius}px;
 					margin: ${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(margin[device])};
 				}
+
 				${rangeThumbSl} {
 					background:${thumbBg};
 					width:${thumbWidth[device]};
@@ -11616,6 +11701,75 @@ const Style = ({
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
+
+/***/ }),
+
+/***/ "./src/Components/Panel/Tab/Tab.js":
+/*!*****************************************!*\
+  !*** ./src/Components/Panel/Tab/Tab.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Tab: () => (/* binding */ Tab)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const Tab = props => {
+  const {
+    options,
+    onChange = () => {},
+    value,
+    paddingY = 4,
+    paddingX = 0
+  } = props;
+  const id = Math.floor(Math.random() * 99999999);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
+          .includeExclude {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #ccc;
+            margin:8px 0px;
+          }
+          .isActive-include {
+            background: #4527a4;
+            color:#ccc;
+          }
+          .single-includeExclude {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            transition: background 0.2s ease-in-out;
+            cursor: pointer;
+            white-space:nowrap;
+            border-right: 1px solid #800080;
+          }
+          .single-includeExclude:last-child{
+            border-right:0px
+          }
+          .dynamic-${id}.single-includeExclude p {
+              margin: 0;
+              padding: ${paddingY}px ${paddingX}px;
+            }
+          .single-includeExclude-hover:hover {
+            background: #ebebeb;
+          }
+          `), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "includeExclude"
+  }, options?.map((option, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: i,
+    onClick: () => onChange(option.replace(/\s/g, "").toLowerCase()),
+    className: `dynamic-${id} single-includeExclude ${value === option.replace(/\s/g, "").toLowerCase() ? 'isActive-include' : 'single-includeExclude-hover'}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: {
+      textTransform: 'capitalize'
+    }
+  }, option)))));
+};
 
 /***/ }),
 
@@ -26517,7 +26671,7 @@ SwiperSlide.displayName = 'SwiperSlide';
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"mpws/music-player","version":"1.0.0","title":"Music Player with Slider","category":"widgets","description":"Add a customizable music player with an interactive slider to your WordPress posts and pages.","keywords":["music","player","music player","music player","music slider"],"textdomain":"music-player","attributes":{"align":{"type":"string","default":""},"musics":{"type":"array","default":[{"title":"Pawn It All","name":"Alicia Keys","source":"https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3","thumbnail":{"url":"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"},"link":"https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"}]},"options":{"type":"object","default":{"newTab":true}},"style":{"type":"object","default":{"rangeInput":{"width":{"desktop":"100%","tablet":"100%","mobile":"100%"},"height":{"desktop":"7px","tablet":"6px","mobile":"6px"},"margin":{"desktop":"","tablet":"","mobile":""},"radius":4,"bg":"#FFFFFF5E"},"rangeThumb":{"thumbWidth":{"desktop":"16px","tablet":"15px","mobile":"14px"},"thumbBg":"rgba(89, 26, 151, 0.9)","thumbShadow":[],"thumbOutline":{"radius":"50%"}}}}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./style-index.css","style":"file:./style-view.css","render":"file:./render.php","viewScript":["file:./view.js","react","react-dom"]}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"mpws/music-player","version":"1.0.0","title":"Music Player with Slider","category":"widgets","description":"Add a customizable music player with an interactive slider to your WordPress posts and pages.","keywords":["music","player","music player","music player","music slider"],"textdomain":"music-player","attributes":{"align":{"type":"string","default":""},"musics":{"type":"array","default":[{"title":"Pawn It All","name":"Alicia Keys","source":"https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3","thumbnail":{"url":"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"},"link":"https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"}]},"options":{"type":"object","default":{"newTab":true,"textSl":"title","rangeSl":"input"}},"style":{"type":"object","default":{"musicTitle":{"color":"#fff","typo":{"fontSize":30}},"musicName":{"color":"#ddd","opacity":0.6,"typo":{"fontSize":20}},"rangeInput":{"width":{"desktop":"100%","tablet":"100%","mobile":"100%"},"height":{"desktop":"7px","tablet":"6px","mobile":"6px"},"margin":{"desktop":"","tablet":"","mobile":""},"radius":4,"bg":"#FFFFFF5E"},"rangeThumb":{"thumbWidth":{"desktop":"16px","tablet":"15px","mobile":"14px"},"thumbBg":"rgba(89, 26, 151, 0.9)","thumbShadow":[],"thumbOutline":{"width":"4px","style":"solid","color":"white","radius":"50%"}}}}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./style-index.css","style":"file:./style-view.css","render":"file:./render.php","viewScript":["file:./view.js","react","react-dom"]}');
 
 /***/ })
 

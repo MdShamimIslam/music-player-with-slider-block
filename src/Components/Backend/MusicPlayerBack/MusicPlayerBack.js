@@ -59,12 +59,14 @@ const MusicPlayerBack = ({ audioRef, isPlaying, setIsPlaying, activeIndex, setAc
     return <div className="music-player">
         <RichText
             tagName="h1"
+            className='title'
             value={musics[activeIndex].title}
             onChange={(v) => updateMusic(setAttributes, setActiveIndex, musics, activeIndex, 'title', v)}
             placeholder="Add Music Title..."
         />
         <RichText
             tagName="p"
+             className='name'
             value={musics[activeIndex].name}
             onChange={(v) => updateMusic(setAttributes, setActiveIndex, musics, activeIndex, 'name', v)}
             placeholder="Add Music Name..."
