@@ -11051,6 +11051,30 @@ const MusicPlayerBack = ({
     progressBg
   } = style.rangeInput;
   const [progress, setProgress] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const [currentTime, setCurrentTime] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const [duration, setDuration] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const audio = audioRef.current;
+    const handleLoadedMetadata = () => {
+      setDuration(audio.duration);
+    };
+    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+    return () => {
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+    };
+  }, [audioRef]);
+  const updateProgress = () => {
+    const audio = audioRef.current;
+    const currentTime = audio.currentTime;
+    setCurrentTime(currentTime);
+    const progress = currentTime / audio.duration * 100;
+    setProgress(progress);
+  };
+  const formatTime = time => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
   const playPauseMusic = () => {
     const audio = audioRef.current;
     if (audio.paused) {
@@ -11080,13 +11104,6 @@ const MusicPlayerBack = ({
       swiperRef.current.slideTo(newIndex);
     }
   };
-  const updateProgress = () => {
-    const audio = audioRef.current;
-    const currentTime = audio.currentTime;
-    const duration = audio.duration;
-    const progress = currentTime / duration * 100;
-    setProgress(progress);
-  };
   const handleSeek = event => {
     const audio = audioRef.current;
     const seekTime = event.target.value / 100 * audio.duration;
@@ -11110,7 +11127,11 @@ const MusicPlayerBack = ({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
     src: musics[activeIndex]?.source,
     type: "audio/mpeg"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "progress-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "current-time"
+  }, formatTime(currentTime)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "range",
     value: progress ? progress : 0,
     id: "progress",
@@ -11119,7 +11140,9 @@ const MusicPlayerBack = ({
     max: "100",
     step: "0.1",
     style: progressStyle
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "duration-time"
+  }, formatTime(duration))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "controls"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "backward",
@@ -11205,10 +11228,7 @@ const General = ({
     value: music.source,
     onChange: v => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateMusic)(setAttributes, setActiveIndex, musics, index, 'source', v)
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUpload, {
-    onSelect: v => {
-      console.log(v);
-      (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateMusic)(setAttributes, setActiveIndex, musics, index, 'source', v.url);
-    },
+    onSelect: v => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateMusic)(setAttributes, setActiveIndex, musics, index, 'source', v.url),
     allowedTypes: ['audio'],
     render: ({
       open
@@ -11395,6 +11415,7 @@ const Style = ({
     height,
     bg,
     progressBg,
+    timeBg,
     radius,
     margin
   } = rangeInput;
@@ -11434,7 +11455,10 @@ const Style = ({
     value: style.border,
     onChange: v => setAttributes({
       style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'border')
-    })
+    }),
+    defaults: {
+      radius: "5px"
+    }
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Music Slider', 'music-player'),
@@ -11462,7 +11486,7 @@ const Style = ({
       style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'musicSlider', 'border')
     }),
     defaults: {
-      radius: "20px"
+      radius: "5px"
     }
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
@@ -11532,6 +11556,12 @@ const Style = ({
     value: progressBg,
     onChange: v => setAttributes({
       style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'rangeInput', "progressBg")
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BColor, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Progress Time Background', 'music-player'),
+    value: timeBg,
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'rangeInput', "timeBg")
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Width', 'music-player')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Device_Device__WEBPACK_IMPORTED_MODULE_4__.Device, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
     value: width[device],
@@ -11726,7 +11756,8 @@ const Style = ({
     width,
     height,
     radius,
-    margin
+    margin,
+    timeBg
   } = rangeInput;
   const {
     thumbWidth,
@@ -11782,6 +11813,10 @@ const Style = ({
 				${musicNameSl} {
 					color:${musicName.color};
 					opacity:${musicName.opacity};
+				}
+
+				${musicPlayerSl} {
+					color:${timeBg};
 				}
 
 				${rangeInputSl} {
@@ -26779,7 +26814,7 @@ SwiperSlide.displayName = 'SwiperSlide';
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"mpws/music-player","version":"1.0.0","title":"Music Player with Slider","category":"widgets","description":"Add a customizable music player with an interactive slider to your WordPress posts and pages.","keywords":["music","player","music player","music player","music slider"],"textdomain":"music-player","attributes":{"align":{"type":"string","default":""},"musics":{"type":"array","default":[{"title":"Pawn It All","name":"Alicia Keys","source":"https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3","thumbnail":{"url":"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"},"link":"https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"}]},"options":{"type":"object","default":{"newTab":true,"textSl":"title","rangeSl":"input"}},"style":{"type":"object","default":{"align":{"desktop":"start","tablet":"start","mobile":"start"},"width":{"desktop":"","tablet":"","mobile":""},"height":{"desktop":"","tablet":"","mobile":""},"border":{},"bg":"#604ca1","musicSlider":{"sliderWidth":{"desktop":"100px","tablet":"80px","mobile":"70px"},"sliderHeight":{"desktop":"80px","tablet":"60px","mobile":"40px"},"border":{"radius":"20px"},"overlayBg":"rgba(28, 22, 37, 0.6)"},"musicTitle":{"color":"#fff","typo":{"fontSize":30}},"musicName":{"color":"#ddd","opacity":0.6,"typo":{"fontSize":20}},"rangeInput":{"width":{"desktop":"100%","tablet":"100%","mobile":"100%"},"height":{"desktop":"7px","tablet":"6px","mobile":"6px"},"margin":{"desktop":{"top":"30px"},"tablet":{"top":"25px"},"mobile":{"top":"20px"}},"radius":4,"bg":"#FFFFFF5E","progressBg":"green"},"rangeThumb":{"thumbWidth":{"desktop":"16px","tablet":"15px","mobile":"14px"},"thumbBg":"rgba(89, 26, 151, 0.9)","thumbShadow":[],"thumbOutline":{"width":"4px","style":"solid","color":"white","radius":"50%"}}}}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./style-index.css","style":"file:./style-view.css","render":"file:./render.php","viewScript":["file:./view.js","react","react-dom"]}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"mpws/music-player","version":"1.0.0","title":"Music Player with Slider","category":"widgets","description":"Add a customizable music player with an interactive slider to your WordPress posts and pages.","keywords":["music","player","music player","music player","music slider"],"textdomain":"music-player","attributes":{"align":{"type":"string","default":""},"musics":{"type":"array","default":[{"title":"Pawn It All","name":"Alicia Keys","source":"https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3","thumbnail":{"url":"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"},"link":"https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"}]},"options":{"type":"object","default":{"newTab":true,"textSl":"title","rangeSl":"input"}},"style":{"type":"object","default":{"align":{"desktop":"start","tablet":"start","mobile":"start"},"width":{"desktop":"","tablet":"","mobile":""},"height":{"desktop":"","tablet":"","mobile":""},"border":{"radius":"5px"},"bg":"#604ca1","musicSlider":{"sliderWidth":{"desktop":"100px","tablet":"80px","mobile":"70px"},"sliderHeight":{"desktop":"80px","tablet":"60px","mobile":"40px"},"border":{"radius":"5px"},"overlayBg":"rgba(28, 22, 37, 0.6)"},"musicTitle":{"color":"#fff","typo":{"fontSize":30}},"musicName":{"color":"#ddd","opacity":0.6,"typo":{"fontSize":20}},"rangeInput":{"width":{"desktop":"400px","tablet":"380px","mobile":"360px"},"height":{"desktop":"7px","tablet":"6px","mobile":"6px"},"margin":{"desktop":{"top":"30px"},"tablet":{"top":"25px"},"mobile":{"top":"20px"}},"radius":4,"bg":"#FFFFFF5E","progressBg":"green","timeBg":"white"},"rangeThumb":{"thumbWidth":{"desktop":"16px","tablet":"15px","mobile":"14px"},"thumbBg":"rgba(89, 26, 151, 0.9)","thumbShadow":[],"thumbOutline":{"width":"4px","style":"solid","color":"white","radius":"50%"}}}}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./style-index.css","style":"file:./style-view.css","render":"file:./render.php","viewScript":["file:./view.js","react","react-dom"]}');
 
 /***/ })
 

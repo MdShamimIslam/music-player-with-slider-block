@@ -248,7 +248,8 @@ const Style = ({
     width,
     height,
     radius,
-    margin
+    margin,
+    timeBg
   } = rangeInput;
   const {
     thumbWidth,
@@ -304,6 +305,10 @@ const Style = ({
 				${musicNameSl} {
 					color:${musicName.color};
 					opacity:${musicName.opacity};
+				}
+
+				${musicPlayerSl} {
+					color:${timeBg};
 				}
 
 				${rangeInputSl} {
@@ -415,6 +420,30 @@ const MusicPl = ({
     progressBg
   } = style.rangeInput;
   const [progress, setProgress] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const [currentTime, setCurrentTime] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const [duration, setDuration] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const audio = audioRef.current;
+    const handleLoadedMetadata = () => {
+      setDuration(audio.duration);
+    };
+    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+    return () => {
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+    };
+  }, [audioRef]);
+  const updateProgress = () => {
+    const audio = audioRef.current;
+    const currentTime = audio.currentTime;
+    setCurrentTime(currentTime);
+    const progress = currentTime / audio.duration * 100;
+    setProgress(progress);
+  };
+  const formatTime = time => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
   const playPauseMusic = () => {
     const audio = audioRef.current;
     if (audio.paused) {
@@ -438,18 +467,9 @@ const MusicPl = ({
     if (isPlaying) {
       audio.play();
     }
-
-    // Use Swiper ref to navigate slides
     if (swiperRef.current) {
       swiperRef.current.slideTo(newIndex);
     }
-  };
-  const updateProgress = () => {
-    const audio = audioRef.current;
-    const currentTime = audio.currentTime;
-    const duration = audio.duration;
-    const progress = currentTime / duration * 100;
-    setProgress(progress);
   };
   const handleSeek = event => {
     const audio = audioRef.current;
@@ -474,7 +494,11 @@ const MusicPl = ({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
     src: musics[activeIndex].source,
     type: "audio/mpeg"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "progress-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "current-time"
+  }, formatTime(currentTime)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "range",
     value: progress ? progress : 0,
     id: "progress",
@@ -483,7 +507,9 @@ const MusicPl = ({
     max: "100",
     step: "0.1",
     style: progressStyle
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "duration-time"
+  }, formatTime(duration))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "controls"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "backward",

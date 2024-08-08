@@ -1,4 +1,21 @@
+
+
+
+
+.progress-container {
+    display: flex;
+    align-items: center;
+}
+
+.current-time,
+.duration-time {
+    width: 40px; 
+    text-align: center;
+}
+
 #progress {
+    flex-grow: 1;
+    margin: 0 10px; 
 	appearance: none;
 	-webkit-appearance: none;
 	cursor: pointer;

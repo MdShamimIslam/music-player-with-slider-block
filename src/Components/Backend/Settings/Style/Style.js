@@ -14,7 +14,7 @@ const Style = ({ attributes, setAttributes, device }) => {
     const { textSl, rangeSl } = options;
     const { align,musicSlider, musicTitle, musicName, rangeInput, rangeThumb } = style;
     const { sliderWidth, sliderHeight, border, overlayBg } = musicSlider;
-    const { width, height, bg,progressBg, radius, margin, } = rangeInput;
+    const { width, height, bg,progressBg,timeBg, radius, margin, } = rangeInput;
     const { thumbWidth, thumbBg, thumbShadow, thumbOutline, } = rangeThumb;
 
     return (
@@ -58,6 +58,7 @@ const Style = ({ attributes, setAttributes, device }) => {
                     label={__('Border', 'music-player')}
                     value={style.border}
                     onChange={(v) => setAttributes({ style: updateData(style, v, 'border') })}
+                    defaults={{ radius: "5px" }}
                 />
 
             </PanelBody>
@@ -92,7 +93,7 @@ const Style = ({ attributes, setAttributes, device }) => {
                     label={__('Border', 'music-player')}
                     value={border}
                     onChange={(v) => setAttributes({ style: updateData(style, v, 'musicSlider', 'border') })}
-                    defaults={{ radius: "20px" }}
+                    defaults={{ radius: "5px" }}
                 />
 
             </PanelBody>
@@ -158,6 +159,11 @@ const Style = ({ attributes, setAttributes, device }) => {
                             label={__('Progress Background', 'music-player')}
                             value={progressBg}
                             onChange={v => setAttributes({ style: updateData(style, v, 'rangeInput', "progressBg") })}
+                        />
+                        <BColor
+                            label={__('Progress Time Background', 'music-player')}
+                            value={timeBg}
+                            onChange={v => setAttributes({ style: updateData(style, v, 'rangeInput', "timeBg") })}
                         />
 
                         <PanelRow>

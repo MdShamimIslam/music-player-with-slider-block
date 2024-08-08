@@ -4,7 +4,7 @@ const Style = ({ attributes, id, device = "desktop" }) => {
 	const { style } = attributes;
 	const {align,musicSlider, musicTitle, musicName, rangeInput, rangeThumb } = style;
 	const { sliderWidth, sliderHeight, border, overlayBg} = musicSlider;
-	const { width, height, radius, margin, } = rangeInput;
+	const { width, height, radius, margin,timeBg } = rangeInput;
 	const { thumbWidth, thumbBg, thumbShadow, thumbOutline, } = rangeThumb;
 
 	const idSl = `#${id}`;
@@ -56,6 +56,10 @@ const Style = ({ attributes, id, device = "desktop" }) => {
 				${musicNameSl} {
 					color:${musicName.color};
 					opacity:${musicName.opacity};
+				}
+
+				${musicPlayerSl} {
+					color:${timeBg};
 				}
 
 				${rangeInputSl} {

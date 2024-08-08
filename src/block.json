@@ -59,7 +59,7 @@
 					"tablet": "",
 					"mobile": ""
 				},
-				"border":{},
+				"border":{"radius":"5px"},
 				"bg":"#604ca1",
 				"musicSlider":{
 					"sliderWidth":{
@@ -72,7 +72,7 @@
 						"tablet": "60px",
 						"mobile": "40px"
 					},
-					"border":{"radius":"20px"},
+					"border":{"radius":"5px"},
 					"overlayBg":"rgba(28, 22, 37, 0.6)"
 				},
 				"musicTitle":{
@@ -86,9 +86,9 @@
 				},
 				"rangeInput": {
 					"width": {
-						"desktop": "100%",
-						"tablet": "100%",
-						"mobile": "100%"
+						"desktop": "400px",
+						"tablet": "380px",
+						"mobile": "360px"
 					},
 					"height": {
 						"desktop": "7px",
@@ -102,7 +102,8 @@
 					},
 					"radius": 4,
 					"bg": "#FFFFFF5E",
-					"progressBg": "green"
+					"progressBg": "green",
+					"timeBg":"white"
 				},
 				"rangeThumb": {
 					"thumbWidth": {
