@@ -1,24 +1,99 @@
 import { __ } from '@wordpress/i18n';
-import { PanelBody, PanelRow, __experimentalUnitControl as UnitControl, RangeControl } from '@wordpress/components';
+import { PanelBody, PanelRow,SelectControl, __experimentalUnitControl as UnitControl, RangeControl } from '@wordpress/components';
 import { BColor, BorderControl, Label, MultiShadowControl, Typography } from '../../../../../../Components';
 import { Device } from '../../../../../../Components/Device/Device';
 import { updateData } from '../../../../utils/functions';
 import { BBoxControl } from '../../../BBoxControl/BBoxControl';
 import { Tab } from '../../../Panel/Tab/Tab';
+import { musicAlignOptions } from '../../../../utils/options';
+import { produce } from 'immer';
 
 
 const Style = ({ attributes, setAttributes, device }) => {
     const { style, options } = attributes;
     const { textSl, rangeSl } = options;
-    const { musicTitle, musicName, rangeInput, rangeThumb } = style;
+    const { align,musicSlider, musicTitle, musicName, rangeInput, rangeThumb } = style;
+    const { sliderWidth, sliderHeight, border, overlayBg } = musicSlider;
     const { width, height, bg, radius, margin, } = rangeInput;
     const { thumbWidth, thumbBg, thumbShadow, thumbOutline, } = rangeThumb;
 
-
     return (
         <>
+            <PanelBody className='bPlPanelBody' title={__('Music Wrapper', 'music-player')}>
+                <PanelRow>
+                    <Label>{__('Alignment', 'b-blocks')}</Label>
+                    <Device />
+                </PanelRow>
+                <SelectControl
+                    value={align[device]}
+                    options={musicAlignOptions}
+                    onChange={(v) => setAttributes({ style: updateData(style, v, 'align', device) })}
+                />
+
+                <PanelRow>
+                    <Label>{__('Width', 'b-blocks')}</Label>
+                    <Device />
+                </PanelRow>
+                <UnitControl
+                    value={style.width[device]}
+                    onChange={(v) => setAttributes({ style: updateData(style, v, "width", device) })}
+                />
+
+                <PanelRow>
+                    <Label>{__('Height', 'b-blocks')}</Label>
+                    <Device />
+                </PanelRow>
+                <UnitControl
+                    value={style.height[device]}
+                    onChange={(v) => setAttributes({ style: updateData(style, v, "height", device) })}
+                />
+
+                <BColor
+                    label={__('Background', 'music-player')}
+                    value={style.bg}
+                    onChange={v => setAttributes({ style: updateData(style, v, "bg") })}
+                />
+
+                <BorderControl
+                    label={__('Border', 'music-player')}
+                    value={style.border}
+                    onChange={(v) => setAttributes({ style: updateData(style, v, 'border') })}
+                />
+
+            </PanelBody>
+
             <PanelBody className='bPlPanelBody' title={__('Music Slider', 'music-player')}>
-               
+
+                <PanelRow>
+                    <Label>{__('Width', 'b-blocks')}</Label>
+                    <Device />
+                </PanelRow>
+                <UnitControl
+                    value={sliderWidth[device]}
+                    onChange={(v) => setAttributes({ style: updateData(style, v, "musicSlider", 'sliderWidth', device) })}
+                />
+
+                <PanelRow>
+                    <Label>{__('Height', 'b-blocks')}</Label>
+                    <Device />
+                </PanelRow>
+                <UnitControl
+                    value={sliderHeight[device]}
+                    onChange={(v) => setAttributes({ style: updateData(style, v, "musicSlider", 'sliderHeight', device) })}
+                />
+
+                <BColor
+                    label={__('Overlay Background', 'music-player')}
+                    value={overlayBg}
+                    onChange={v => setAttributes({ style: updateData(style, v, "musicSlider", "overlayBg") })}
+                />
+
+                <BorderControl
+                    label={__('Border', 'music-player')}
+                    value={border}
+                    onChange={(v) => setAttributes({ style: updateData(style, v, 'musicSlider', 'border') })}
+                    defaults={{ radius: "20px" }}
+                />
 
             </PanelBody>
 
@@ -96,7 +171,6 @@ const Style = ({ attributes, setAttributes, device }) => {
                         <UnitControl
                             value={height[device]}
                             onChange={(v) => setAttributes({ style: updateData(style, v, 'rangeInput', 'height', device) })}
-                        // onChange={(v) => setAttributes({ style: produce(style, draft => { draft.margin[device] = v }) })}
                         />
 
                         <PanelRow>
@@ -106,7 +180,9 @@ const Style = ({ attributes, setAttributes, device }) => {
                         <BBoxControl
                             label=""
                             values={margin[device]}
-                            onChange={v => setAttributes({ style: updateData(style, v, 'rangeInput', "margin", device) })}
+                            onChange={v => setAttributes({style: produce(style,draft=>{
+                                draft.rangeInput.margin[device] = v;
+                            })})}
                         />
 
                         <RangeControl
@@ -152,13 +228,6 @@ const Style = ({ attributes, setAttributes, device }) => {
 
 
             </PanelBody>
-
-            {/* <PanelBody className='bPlPanelBody' title={__('Range Input', 'music-player')} initialOpen={false}>
-            </PanelBody> */}
-
-            {/* <PanelBody className='bPlPanelBody' title={__('Range Thump', 'music-player')} initialOpen={false}>
-            </PanelBody> */}
-
         </>
     )
 }

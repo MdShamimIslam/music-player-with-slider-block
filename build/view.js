@@ -231,11 +231,18 @@ const Style = ({
     style
   } = attributes;
   const {
+    musicSlider,
     musicTitle,
     musicName,
     rangeInput,
     rangeThumb
   } = style;
+  const {
+    sliderWidth,
+    sliderHeight,
+    border,
+    overlayBg
+  } = musicSlider;
   const {
     width,
     height,
@@ -251,6 +258,9 @@ const Style = ({
   } = rangeThumb;
   const mainSl = `#${id}`;
   const blockSl = `${mainSl} .bBlocksMusicPlayer`;
+  const swiperSl = `${blockSl} .swiper`;
+  const activeSlideSl = `${swiperSl} .activeSlide`;
+  const activeOverlaySl = `${swiperSl} .swiper-slide-active .overlay`;
   const musicPlayerSl = `${blockSl} .music-player`;
   const musicTitleSl = `${musicPlayerSl} .title`;
   const musicNameSl = `${musicPlayerSl} .name`;
@@ -264,6 +274,23 @@ const Style = ({
 
 				${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)('', musicName.typo)?.googleFontLink}
         		${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(musicNameSl, musicName.typo)?.styles}
+
+				${blockSl}{
+					width:${style.width[device] ? style.width[device] : '100%'};
+					height:${style.height[device] ? style.height[device] : 'inherit'};
+					background:${style.bg};
+					${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBorderCSS)(style.border)}
+				}
+
+				${activeSlideSl}{
+					width:${sliderWidth[device]};
+					height:${sliderHeight[device]};
+					${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBorderCSS)(border)}
+				}
+
+				${activeOverlaySl} {
+					background:${overlayBg};
+				}
 
 				${musicTitleSl} {
 					color:${musicTitle.color};

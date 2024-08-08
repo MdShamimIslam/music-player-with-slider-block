@@ -44,6 +44,37 @@
 		"style": {
 			"type": "object",
 			"default": {
+				"align":{
+					"desktop": "start",
+					"tablet": "start",
+					"mobile": "start"
+				},
+				"width":{
+					"desktop": "",
+					"tablet": "",
+					"mobile": ""
+				},
+				"height":{
+					"desktop": "",
+					"tablet": "",
+					"mobile": ""
+				},
+				"border":{},
+				"bg":"#604ca1",
+				"musicSlider":{
+					"sliderWidth":{
+						"desktop": "100px",
+						"tablet": "80px",
+						"mobile": "70px"
+					},
+					"sliderHeight":{
+						"desktop": "80px",
+						"tablet": "60px",
+						"mobile": "40px"
+					},
+					"border":{"radius":"20px"},
+					"overlayBg":"rgba(28, 22, 37, 0.6)"
+				},
 				"musicTitle":{
 					"color":"#fff",
 					"typo":{"fontSize": 30}
@@ -65,9 +96,9 @@
 						"mobile": "6px"
 					},
 					"margin": {
-						"desktop": "",
-						"tablet": "",
-						"mobile": ""
+						"desktop": {"top":"30px"},
+						"tablet": {"top":"25px"},
+						"mobile": {"top":"20px"}
 					},
 					"radius": 4,
 					"bg": "#FFFFFF5E"

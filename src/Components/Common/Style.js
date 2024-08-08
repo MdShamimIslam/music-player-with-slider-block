@@ -1,13 +1,17 @@
-import { getBoxCSS, getMultiShadowCSS,getTypoCSS } from '../../../../Components/utils/getCSS';
+import { getBorderCSS,getBoxCSS, getMultiShadowCSS,getTypoCSS } from '../../../../Components/utils/getCSS';
 
 const Style = ({ attributes, id, device = "desktop" }) => {
 	const { style } = attributes;
-	const { musicTitle, musicName, rangeInput, rangeThumb } = style;
+	const {musicSlider, musicTitle, musicName, rangeInput, rangeThumb } = style;
+	const { sliderWidth, sliderHeight, border, overlayBg} = musicSlider;
 	const { width, height, bg, radius, margin, } = rangeInput;
 	const { thumbWidth, thumbBg, thumbShadow, thumbOutline, } = rangeThumb;
 
 	const mainSl = `#${id}`;
 	const blockSl = `${mainSl} .bBlocksMusicPlayer`;
+	const swiperSl = `${blockSl} .swiper`;
+	const activeSlideSl = `${swiperSl} .activeSlide`;
+	const activeOverlaySl = `${swiperSl} .swiper-slide-active .overlay`;
 	const musicPlayerSl = `${blockSl} .music-player`;
 	const musicTitleSl = `${musicPlayerSl} .title`;
 	const musicNameSl = `${musicPlayerSl} .name`;
@@ -22,6 +26,23 @@ const Style = ({ attributes, id, device = "desktop" }) => {
 
 				${getTypoCSS('', musicName.typo)?.googleFontLink}
         		${getTypoCSS(musicNameSl, musicName.typo)?.styles}
+
+				${blockSl}{
+					width:${style.width[device] ? style.width[device] : '100%'};
+					height:${style.height[device] ? style.height[device] : 'inherit'};
+					background:${style.bg};
+					${getBorderCSS(style.border)}
+				}
+
+				${activeSlideSl}{
+					width:${sliderWidth[device]};
+					height:${sliderHeight[device]};
+					${getBorderCSS(border)}
+				}
+
+				${activeOverlaySl} {
+					background:${overlayBg};
+				}
 
 				${musicTitleSl} {
 					color:${musicTitle.color};

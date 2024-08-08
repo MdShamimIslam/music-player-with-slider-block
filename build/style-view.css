@@ -84,15 +84,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  background: #604ca1;
   background-repeat: no-repeat;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   animation: slideIn 120s forwards infinite alternate;
   padding: 15px 8px;
   display: inline-block;
-  height: inherit;
   overflow: hidden;
 }
 .wp-block-mpws-music-player .bBlocksMusicPlayer .swiper {

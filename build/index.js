@@ -11351,6 +11351,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/functions */ "./src/utils/functions.js");
 /* harmony import */ var _BBoxControl_BBoxControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../BBoxControl/BBoxControl */ "./src/Components/BBoxControl/BBoxControl.js");
 /* harmony import */ var _Panel_Tab_Tab__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../Panel/Tab/Tab */ "./src/Components/Panel/Tab/Tab.js");
+/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../utils/options */ "./src/utils/options.js");
+/* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! immer */ "./node_modules/immer/dist/immer.mjs");
+
+
 
 
 
@@ -11373,11 +11377,19 @@ const Style = ({
     rangeSl
   } = options;
   const {
+    align,
+    musicSlider,
     musicTitle,
     musicName,
     rangeInput,
     rangeThumb
   } = style;
+  const {
+    sliderWidth,
+    sliderHeight,
+    border,
+    overlayBg
+  } = musicSlider;
   const {
     width,
     height,
@@ -11393,13 +11405,63 @@ const Style = ({
   } = rangeThumb;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Music Slider', 'music-player')
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Panel_Tab_Tab__WEBPACK_IMPORTED_MODULE_7__.Tab, {
-    options: ["active music", "overlay"],
-    value: textSl,
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Music Wrapper', 'music-player')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Alignment', 'b-blocks')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Device_Device__WEBPACK_IMPORTED_MODULE_4__.Device, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+    value: align[device],
+    options: _utils_options__WEBPACK_IMPORTED_MODULE_8__.musicAlignOptions,
     onChange: v => setAttributes({
-      options: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(options, v, "textSl")
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'align', device)
     })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Width', 'b-blocks')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Device_Device__WEBPACK_IMPORTED_MODULE_4__.Device, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
+    value: style.width[device],
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, "width", device)
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Height', 'b-blocks')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Device_Device__WEBPACK_IMPORTED_MODULE_4__.Device, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
+    value: style.height[device],
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, "height", device)
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BColor, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background', 'music-player'),
+    value: style.bg,
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, "bg")
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BorderControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border', 'music-player'),
+    value: style.border,
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'border')
+    })
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Music Slider', 'music-player')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Width', 'b-blocks')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Device_Device__WEBPACK_IMPORTED_MODULE_4__.Device, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
+    value: sliderWidth[device],
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, "musicSlider", 'sliderWidth', device)
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Height', 'b-blocks')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Device_Device__WEBPACK_IMPORTED_MODULE_4__.Device, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
+    value: sliderHeight[device],
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, "musicSlider", 'sliderHeight', device)
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BColor, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Overlay Background', 'music-player'),
+    value: overlayBg,
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, "musicSlider", "overlayBg")
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BorderControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border', 'music-player'),
+    value: border,
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'musicSlider', 'border')
+    }),
+    defaults: {
+      radius: "20px"
+    }
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Music Player', 'music-player')
@@ -11472,12 +11534,13 @@ const Style = ({
     onChange: v => setAttributes({
       style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'rangeInput', 'height', device)
     })
-    // onChange={(v) => setAttributes({ style: produce(style, draft => { draft.margin[device] = v }) })}
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Margin', 'music-player')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Device_Device__WEBPACK_IMPORTED_MODULE_4__.Device, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_BBoxControl_BBoxControl__WEBPACK_IMPORTED_MODULE_6__.BBoxControl, {
     label: "",
     values: margin[device],
     onChange: v => setAttributes({
-      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, 'rangeInput', "margin", device)
+      style: (0,immer__WEBPACK_IMPORTED_MODULE_9__.produce)(style, draft => {
+        draft.rangeInput.margin[device] = v;
+      })
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border radius', 'music-player'),
@@ -11637,11 +11700,18 @@ const Style = ({
     style
   } = attributes;
   const {
+    musicSlider,
     musicTitle,
     musicName,
     rangeInput,
     rangeThumb
   } = style;
+  const {
+    sliderWidth,
+    sliderHeight,
+    border,
+    overlayBg
+  } = musicSlider;
   const {
     width,
     height,
@@ -11657,6 +11727,9 @@ const Style = ({
   } = rangeThumb;
   const mainSl = `#${id}`;
   const blockSl = `${mainSl} .bBlocksMusicPlayer`;
+  const swiperSl = `${blockSl} .swiper`;
+  const activeSlideSl = `${swiperSl} .activeSlide`;
+  const activeOverlaySl = `${swiperSl} .swiper-slide-active .overlay`;
   const musicPlayerSl = `${blockSl} .music-player`;
   const musicTitleSl = `${musicPlayerSl} .title`;
   const musicNameSl = `${musicPlayerSl} .name`;
@@ -11670,6 +11743,23 @@ const Style = ({
 
 				${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)('', musicName.typo)?.googleFontLink}
         		${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(musicNameSl, musicName.typo)?.styles}
+
+				${blockSl}{
+					width:${style.width[device] ? style.width[device] : '100%'};
+					height:${style.height[device] ? style.height[device] : 'inherit'};
+					background:${style.bg};
+					${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBorderCSS)(style.border)}
+				}
+
+				${activeSlideSl}{
+					width:${sliderWidth[device]};
+					height:${sliderHeight[device]};
+					${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBorderCSS)(border)}
+				}
+
+				${activeOverlaySl} {
+					background:${overlayBg};
+				}
 
 				${musicTitleSl} {
 					color:${musicTitle.color};
@@ -12001,6 +12091,7 @@ function BiPlusMedical(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   generalStyleTabs: () => (/* binding */ generalStyleTabs),
+/* harmony export */   musicAlignOptions: () => (/* binding */ musicAlignOptions),
 /* harmony export */   musicOptions: () => (/* binding */ musicOptions),
 /* harmony export */   musics: () => (/* binding */ musics)
 /* harmony export */ });
@@ -12013,6 +12104,16 @@ const generalStyleTabs = [{
 }, {
   name: 'style',
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Style', 'music-player')
+}];
+const musicAlignOptions = [{
+  label: 'Left',
+  value: 'start'
+}, {
+  label: 'Center',
+  value: 'center'
+}, {
+  label: 'Right',
+  value: 'end'
 }];
 const musics = [{
   title: "Pawn It All",
@@ -12072,13 +12173,13 @@ const musics = [{
   link: "https://www.youtube.com/watch?v=tCXGJQYZ9JA&ab_channel=TaylorSwiftVEVO"
 }];
 const musicOptions = {
-  title: "Pawn It All",
-  name: "Alicia Keys",
-  source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
+  title: "Seni Dert Etmeler",
+  name: "Madrigal",
+  source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Madrigal-Seni-Dert-Etmeler.mp3",
   thumbnail: {
-    url: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"
+    url: "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/abaa23bd-8c93-4219-a3ef-0d0cb6f12566"
   },
-  link: "https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"
+  link: "https://www.youtube.com/watch?v=LgsaD-vNJ9M"
 };
 
 /***/ }),
@@ -26671,7 +26772,7 @@ SwiperSlide.displayName = 'SwiperSlide';
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"mpws/music-player","version":"1.0.0","title":"Music Player with Slider","category":"widgets","description":"Add a customizable music player with an interactive slider to your WordPress posts and pages.","keywords":["music","player","music player","music player","music slider"],"textdomain":"music-player","attributes":{"align":{"type":"string","default":""},"musics":{"type":"array","default":[{"title":"Pawn It All","name":"Alicia Keys","source":"https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3","thumbnail":{"url":"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"},"link":"https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"}]},"options":{"type":"object","default":{"newTab":true,"textSl":"title","rangeSl":"input"}},"style":{"type":"object","default":{"musicTitle":{"color":"#fff","typo":{"fontSize":30}},"musicName":{"color":"#ddd","opacity":0.6,"typo":{"fontSize":20}},"rangeInput":{"width":{"desktop":"100%","tablet":"100%","mobile":"100%"},"height":{"desktop":"7px","tablet":"6px","mobile":"6px"},"margin":{"desktop":"","tablet":"","mobile":""},"radius":4,"bg":"#FFFFFF5E"},"rangeThumb":{"thumbWidth":{"desktop":"16px","tablet":"15px","mobile":"14px"},"thumbBg":"rgba(89, 26, 151, 0.9)","thumbShadow":[],"thumbOutline":{"width":"4px","style":"solid","color":"white","radius":"50%"}}}}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./style-index.css","style":"file:./style-view.css","render":"file:./render.php","viewScript":["file:./view.js","react","react-dom"]}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"mpws/music-player","version":"1.0.0","title":"Music Player with Slider","category":"widgets","description":"Add a customizable music player with an interactive slider to your WordPress posts and pages.","keywords":["music","player","music player","music player","music slider"],"textdomain":"music-player","attributes":{"align":{"type":"string","default":""},"musics":{"type":"array","default":[{"title":"Pawn It All","name":"Alicia Keys","source":"https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3","thumbnail":{"url":"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"},"link":"https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"}]},"options":{"type":"object","default":{"newTab":true,"textSl":"title","rangeSl":"input"}},"style":{"type":"object","default":{"align":{"desktop":"start","tablet":"start","mobile":"start"},"width":{"desktop":"","tablet":"","mobile":""},"height":{"desktop":"","tablet":"","mobile":""},"border":{},"bg":"#604ca1","musicSlider":{"sliderWidth":{"desktop":"100px","tablet":"80px","mobile":"70px"},"sliderHeight":{"desktop":"80px","tablet":"60px","mobile":"40px"},"border":{"radius":"20px"},"overlayBg":"rgba(28, 22, 37, 0.6)"},"musicTitle":{"color":"#fff","typo":{"fontSize":30}},"musicName":{"color":"#ddd","opacity":0.6,"typo":{"fontSize":20}},"rangeInput":{"width":{"desktop":"100%","tablet":"100%","mobile":"100%"},"height":{"desktop":"7px","tablet":"6px","mobile":"6px"},"margin":{"desktop":{"top":"30px"},"tablet":{"top":"25px"},"mobile":{"top":"20px"}},"radius":4,"bg":"#FFFFFF5E"},"rangeThumb":{"thumbWidth":{"desktop":"16px","tablet":"15px","mobile":"14px"},"thumbBg":"rgba(89, 26, 151, 0.9)","thumbShadow":[],"thumbOutline":{"width":"4px","style":"solid","color":"white","radius":"50%"}}}}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./style-index.css","style":"file:./style-view.css","render":"file:./render.php","viewScript":["file:./view.js","react","react-dom"]}');
 
 /***/ })
 
