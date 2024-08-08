@@ -1,4 +1,4 @@
-import { getBorderCSS,getBoxCSS, getMultiShadowCSS,getTypoCSS } from '../../../../Components/utils/getCSS';
+import { getBorderCSS,getBoxCSS, getMultiShadowCSS,getTypoCSS,getColorsCSS } from '../../../../Components/utils/getCSS';
 
 const Style = ({ attributes, id, device = "desktop" }) => {
 	const { style } = attributes;
@@ -80,7 +80,9 @@ const Style = ({ attributes, id, device = "desktop" }) => {
 
 				${controlsBtnSl} {
 					width:${controlsBtn.width[device]};
-					background:${controlsBtn.bg}
+					${getBorderCSS(controlsBtn.border)}
+					${getColorsCSS(controlsBtn.colors)}
+
 				}
 
 				@media only screen and (min-width:641px) and (max-width: 1024px){

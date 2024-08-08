@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { PanelBody, PanelRow, SelectControl, __experimentalUnitControl as UnitControl, RangeControl } from '@wordpress/components';
-import { BColor, BorderControl, Label, MultiShadowControl, Typography } from '../../../../../../Components';
+import { BColor, BorderControl, Label, MultiShadowControl, Typography, ColorsControl } from '../../../../../../Components';
 import { Device } from '../../../../../../Components/Device/Device';
 import { updateData } from '../../../../utils/functions';
 import { BBoxControl } from '../../../BBoxControl/BBoxControl';
@@ -245,7 +245,7 @@ const Style = ({ attributes, setAttributes, device }) => {
             <PanelBody className='bPlPanelBody' title={__('Music Controls Button', 'music-player')} initialOpen={false}>
 
                 <PanelRow>
-                    <Label>{__('Width', 'b-blocks')}</Label>
+                    <Label>{__('Width', 'music-player')}</Label>
                     <Device />
                 </PanelRow>
                 <UnitControl
@@ -253,10 +253,18 @@ const Style = ({ attributes, setAttributes, device }) => {
                     onChange={(v) => setAttributes({ style: updateData(style, v, "controlsBtn", "width", device) })}
                 />
 
-                <BColor
-                    label={__('Background', 'music-player')}
-                    value={controlsBtn.bg}
-                    onChange={v => setAttributes({ style: updateData(style, v,"controlsBtn","bg") })}
+                <ColorsControl
+                    label={__('Colors', 'music-player')}
+                    value={controlsBtn.colors}
+                    onChange={(v) => setAttributes({ style: updateData(style, v,"controlsBtn", 'colors') })}
+                    defaults={{ color: "white", bg: "rgba(163, 162, 164, 0.3)" }}
+                />
+
+                <BorderControl
+                    label={__('Border', 'music-player')}
+                    value={controlsBtn.border}
+                    onChange={(v) => setAttributes({ style: updateData(style, v, "controlsBtn", 'border') })}
+                    defaults={{ radius: "50%" }}
                 />
 
             </PanelBody>
