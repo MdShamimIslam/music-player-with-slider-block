@@ -236,7 +236,8 @@ const Style = ({
     musicTitle,
     musicName,
     rangeInput,
-    rangeThumb
+    rangeThumb,
+    controlsBtn
   } = style;
   const {
     sliderWidth,
@@ -266,6 +267,7 @@ const Style = ({
   const musicPlayerSl = `${blockSl} .music-player`;
   const musicTitleSl = `${musicPlayerSl} .title`;
   const musicNameSl = `${musicPlayerSl} .name`;
+  const controlsBtnSl = `${blockSl} .controls button`;
   const rangeInputSl = `${musicPlayerSl} #progress`;
   const rangeThumbSl = `${rangeInputSl}::-webkit-slider-thumb`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
@@ -324,6 +326,11 @@ const Style = ({
 					border-radius:${thumbOutline.radius};
 					box-shadow: ${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getMultiShadowCSS)(thumbShadow)};
 					outline: ${thumbOutline.width} ${thumbOutline.style} ${thumbOutline.color};
+				}
+
+				${controlsBtnSl} {
+					width:${controlsBtn.width[device]};
+					background:${controlsBtn.bg}
 				}
 
 				@media only screen and (min-width:641px) and (max-width: 1024px){

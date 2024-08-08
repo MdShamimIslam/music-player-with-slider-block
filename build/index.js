@@ -11402,7 +11402,8 @@ const Style = ({
     musicTitle,
     musicName,
     rangeInput,
-    rangeThumb
+    rangeThumb,
+    controlsBtn
   } = style;
   const {
     sliderWidth,
@@ -11617,7 +11618,22 @@ const Style = ({
     defaults: {
       radius: "50%"
     }
-  }))));
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Music Controls Button', 'music-player'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Width', 'b-blocks')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Device_Device__WEBPACK_IMPORTED_MODULE_4__.Device, null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
+    value: controlsBtn.width[device],
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, "controlsBtn", "width", device)
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BColor, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background', 'music-player'),
+    value: controlsBtn.bg,
+    onChange: v => setAttributes({
+      style: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.updateData)(style, v, "controlsBtn", "bg")
+    })
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
 
@@ -11744,7 +11760,8 @@ const Style = ({
     musicTitle,
     musicName,
     rangeInput,
-    rangeThumb
+    rangeThumb,
+    controlsBtn
   } = style;
   const {
     sliderWidth,
@@ -11774,6 +11791,7 @@ const Style = ({
   const musicPlayerSl = `${blockSl} .music-player`;
   const musicTitleSl = `${musicPlayerSl} .title`;
   const musicNameSl = `${musicPlayerSl} .name`;
+  const controlsBtnSl = `${blockSl} .controls button`;
   const rangeInputSl = `${musicPlayerSl} #progress`;
   const rangeThumbSl = `${rangeInputSl}::-webkit-slider-thumb`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
@@ -11832,6 +11850,11 @@ const Style = ({
 					border-radius:${thumbOutline.radius};
 					box-shadow: ${(0,_Components_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getMultiShadowCSS)(thumbShadow)};
 					outline: ${thumbOutline.width} ${thumbOutline.style} ${thumbOutline.color};
+				}
+
+				${controlsBtnSl} {
+					width:${controlsBtn.width[device]};
+					background:${controlsBtn.bg}
 				}
 
 				@media only screen and (min-width:641px) and (max-width: 1024px){
@@ -26814,7 +26837,7 @@ SwiperSlide.displayName = 'SwiperSlide';
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"mpws/music-player","version":"1.0.0","title":"Music Player with Slider","category":"widgets","description":"Add a customizable music player with an interactive slider to your WordPress posts and pages.","keywords":["music","player","music player","music player","music slider"],"textdomain":"music-player","attributes":{"align":{"type":"string","default":""},"musics":{"type":"array","default":[{"title":"Pawn It All","name":"Alicia Keys","source":"https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3","thumbnail":{"url":"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"},"link":"https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"}]},"options":{"type":"object","default":{"newTab":true,"textSl":"title","rangeSl":"input"}},"style":{"type":"object","default":{"align":{"desktop":"start","tablet":"start","mobile":"start"},"width":{"desktop":"","tablet":"","mobile":""},"height":{"desktop":"","tablet":"","mobile":""},"border":{"radius":"5px"},"bg":"#604ca1","musicSlider":{"sliderWidth":{"desktop":"100px","tablet":"80px","mobile":"70px"},"sliderHeight":{"desktop":"80px","tablet":"60px","mobile":"40px"},"border":{"radius":"5px"},"overlayBg":"rgba(28, 22, 37, 0.6)"},"musicTitle":{"color":"#fff","typo":{"fontSize":30}},"musicName":{"color":"#ddd","opacity":0.6,"typo":{"fontSize":20}},"rangeInput":{"width":{"desktop":"400px","tablet":"380px","mobile":"360px"},"height":{"desktop":"7px","tablet":"6px","mobile":"6px"},"margin":{"desktop":{"top":"30px"},"tablet":{"top":"25px"},"mobile":{"top":"20px"}},"radius":4,"bg":"#FFFFFF5E","progressBg":"green","timeBg":"white"},"rangeThumb":{"thumbWidth":{"desktop":"16px","tablet":"15px","mobile":"14px"},"thumbBg":"rgba(89, 26, 151, 0.9)","thumbShadow":[],"thumbOutline":{"width":"4px","style":"solid","color":"white","radius":"50%"}}}}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./style-index.css","style":"file:./style-view.css","render":"file:./render.php","viewScript":["file:./view.js","react","react-dom"]}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"mpws/music-player","version":"1.0.0","title":"Music Player with Slider","category":"widgets","description":"Add a customizable music player with an interactive slider to your WordPress posts and pages.","keywords":["music","player","music player","music player","music slider"],"textdomain":"music-player","attributes":{"align":{"type":"string","default":""},"musics":{"type":"array","default":[{"title":"Pawn It All","name":"Alicia Keys","source":"https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3","thumbnail":{"url":"https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/1afe4c6a-0287-43f0-9076-92f8be49d9dc"},"link":"https://www.youtube.com/watch?v=qEnfeG8uBRY&ab_channel=AliciaKeys-Topic"}]},"options":{"type":"object","default":{"newTab":true,"textSl":"title","rangeSl":"input"}},"style":{"type":"object","default":{"align":{"desktop":"start","tablet":"start","mobile":"start"},"width":{"desktop":"","tablet":"","mobile":""},"height":{"desktop":"","tablet":"","mobile":""},"border":{"radius":"5px"},"bg":"#604ca1","musicSlider":{"sliderWidth":{"desktop":"100px","tablet":"80px","mobile":"70px"},"sliderHeight":{"desktop":"80px","tablet":"60px","mobile":"40px"},"border":{"radius":"5px"},"overlayBg":"rgba(28, 22, 37, 0.6)"},"musicTitle":{"color":"#fff","typo":{"fontSize":30}},"musicName":{"color":"#ddd","opacity":0.6,"typo":{"fontSize":20}},"rangeInput":{"width":{"desktop":"400px","tablet":"380px","mobile":"160px"},"height":{"desktop":"7px","tablet":"6px","mobile":"6px"},"margin":{"desktop":{"top":"30px"},"tablet":{"top":"25px"},"mobile":{"top":"20px"}},"radius":4,"bg":"#FFFFFF5E","progressBg":"green","timeBg":"white"},"rangeThumb":{"thumbWidth":{"desktop":"16px","tablet":"15px","mobile":"14px"},"thumbBg":"rgba(89, 26, 151, 0.9)","thumbShadow":[],"thumbOutline":{"width":"4px","style":"solid","color":"white","radius":"50%"}},"controlsBtn":{"width":{"desktop":"50px","tablet":"45px","mobile":"40px"},"bg":"rgba(163, 162, 164, 0.3)"}}}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./style-index.css","style":"file:./style-view.css","render":"file:./render.php","viewScript":["file:./view.js","react","react-dom"]}');
 
 /***/ })
 

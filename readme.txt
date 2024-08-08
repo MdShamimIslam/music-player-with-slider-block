@@ -10,7 +10,7 @@ Requires PHP:		7.2
 License:			GPLv3 or later
 License URI:		http://www.gnu.org/licenses/gpl-3.0.html
 
-Add a dynamic music player to your WordPress site with an interactive slider. Customize audio playback and enhance user experience with seamless control and integration. Perfect for showcasing playlists, tracks, and audio content within posts and pages.
+Add a dynamic music player to your WordPress site with an interactive slider.
 
 == Description ==
 

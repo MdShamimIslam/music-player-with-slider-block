@@ -96,7 +96,7 @@
           "width": {
             "desktop": "400px",
             "tablet": "380px",
-            "mobile": "360px"
+            "mobile": "160px"
           },
           "height": {
             "desktop": "7px",
@@ -133,6 +133,14 @@
             "color": "white",
             "radius": "50%"
           }
+        },
+        "controlsBtn": {
+          "width": {
+            "desktop": "50px",
+            "tablet": "45px",
+            "mobile": "40px"
+          },
+          "bg": "rgba(163, 162, 164, 0.3)"
         }
       }
     }

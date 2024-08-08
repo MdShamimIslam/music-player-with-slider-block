@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Music Player with Slider
- * Description: Add a dynamic music player to your WordPress site with an interactive slider. Customize audio playback and enhance user experience with seamless control and integration. Perfect for showcasing playlists, tracks, and audio content within posts and pages.
+ * Description: Add a dynamic music player to your WordPress site with an interactive slider. Customize audio playback and enhance user experience with seamless control and integration.
  * Version: 1.0.0
  * Author: bPlugins
  * Author URI: https://bplugins.com

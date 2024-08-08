@@ -2,7 +2,7 @@ import { getBorderCSS,getBoxCSS, getMultiShadowCSS,getTypoCSS } from '../../../.
 
 const Style = ({ attributes, id, device = "desktop" }) => {
 	const { style } = attributes;
-	const {align,musicSlider, musicTitle, musicName, rangeInput, rangeThumb } = style;
+	const {align,musicSlider, musicTitle, musicName, rangeInput, rangeThumb,controlsBtn } = style;
 	const { sliderWidth, sliderHeight, border, overlayBg} = musicSlider;
 	const { width, height, radius, margin,timeBg } = rangeInput;
 	const { thumbWidth, thumbBg, thumbShadow, thumbOutline, } = rangeThumb;
@@ -16,6 +16,7 @@ const Style = ({ attributes, id, device = "desktop" }) => {
 	const musicPlayerSl = `${blockSl} .music-player`;
 	const musicTitleSl = `${musicPlayerSl} .title`;
 	const musicNameSl = `${musicPlayerSl} .name`;
+	const controlsBtnSl = `${blockSl} .controls button`;
 
 	const rangeInputSl = `${musicPlayerSl} #progress`;
 	const rangeThumbSl = `${rangeInputSl}::-webkit-slider-thumb`;
@@ -75,6 +76,11 @@ const Style = ({ attributes, id, device = "desktop" }) => {
 					border-radius:${thumbOutline.radius};
 					box-shadow: ${getMultiShadowCSS(thumbShadow)};
 					outline: ${thumbOutline.width} ${thumbOutline.style} ${thumbOutline.color};
+				}
+
+				${controlsBtnSl} {
+					width:${controlsBtn.width[device]};
+					background:${controlsBtn.bg}
 				}
 
 				@media only screen and (min-width:641px) and (max-width: 1024px){

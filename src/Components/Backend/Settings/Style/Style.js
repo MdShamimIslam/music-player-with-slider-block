@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { PanelBody, PanelRow,SelectControl, __experimentalUnitControl as UnitControl, RangeControl } from '@wordpress/components';
+import { PanelBody, PanelRow, SelectControl, __experimentalUnitControl as UnitControl, RangeControl } from '@wordpress/components';
 import { BColor, BorderControl, Label, MultiShadowControl, Typography } from '../../../../../../Components';
 import { Device } from '../../../../../../Components/Device/Device';
 import { updateData } from '../../../../utils/functions';
@@ -12,9 +12,9 @@ import { produce } from 'immer';
 const Style = ({ attributes, setAttributes, device }) => {
     const { style, options } = attributes;
     const { textSl, rangeSl } = options;
-    const { align,musicSlider, musicTitle, musicName, rangeInput, rangeThumb } = style;
+    const { align, musicSlider, musicTitle, musicName, rangeInput, rangeThumb, controlsBtn } = style;
     const { sliderWidth, sliderHeight, border, overlayBg } = musicSlider;
-    const { width, height, bg,progressBg,timeBg, radius, margin, } = rangeInput;
+    const { width, height, bg, progressBg, timeBg, radius, margin, } = rangeInput;
     const { thumbWidth, thumbBg, thumbShadow, thumbOutline, } = rangeThumb;
 
     return (
@@ -191,9 +191,11 @@ const Style = ({ attributes, setAttributes, device }) => {
                         <BBoxControl
                             label=""
                             values={margin[device]}
-                            onChange={v => setAttributes({style: produce(style,draft=>{
-                                draft.rangeInput.margin[device] = v;
-                            })})}
+                            onChange={v => setAttributes({
+                                style: produce(style, draft => {
+                                    draft.rangeInput.margin[device] = v;
+                                })
+                            })}
                         />
 
                         <RangeControl
@@ -237,6 +239,25 @@ const Style = ({ attributes, setAttributes, device }) => {
                 }
 
 
+
+            </PanelBody>
+
+            <PanelBody className='bPlPanelBody' title={__('Music Controls Button', 'music-player')} initialOpen={false}>
+
+                <PanelRow>
+                    <Label>{__('Width', 'b-blocks')}</Label>
+                    <Device />
+                </PanelRow>
+                <UnitControl
+                    value={controlsBtn.width[device]}
+                    onChange={(v) => setAttributes({ style: updateData(style, v, "controlsBtn", "width", device) })}
+                />
+
+                <BColor
+                    label={__('Background', 'music-player')}
+                    value={controlsBtn.bg}
+                    onChange={v => setAttributes({ style: updateData(style, v,"controlsBtn","bg") })}
+                />
 
             </PanelBody>
         </>
