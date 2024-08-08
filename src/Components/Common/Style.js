@@ -107,6 +107,10 @@ const Style = ({ attributes, id, device = "desktop" }) => {
 					${rangeThumbSl} {
 						width:${thumbWidth.tablet};
 				    }
+
+					${controlsBtnSl} {
+						width:${controlsBtn.width.tablet};
+					}
 				}
 
 				 @media only screen and (max-width:640px){
@@ -133,6 +137,10 @@ const Style = ({ attributes, id, device = "desktop" }) => {
 					${rangeThumbSl} {
 						width:${thumbWidth.mobile};
 				    }
+
+					${controlsBtnSl} {
+						width:${controlsBtn.width.mobile};
+					}
 				 }
 
 	    `}} />;
