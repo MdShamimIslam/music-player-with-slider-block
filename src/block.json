@@ -101,7 +101,8 @@
 						"mobile": {"top":"20px"}
 					},
 					"radius": 4,
-					"bg": "#FFFFFF5E"
+					"bg": "#FFFFFF5E",
+					"progressBg": "green"
 				},
 				"rangeThumb": {
 					"thumbWidth": {

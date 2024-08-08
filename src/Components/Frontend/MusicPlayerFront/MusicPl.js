@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaBackward, FaForward, FaPause, FaPlay } from '../../../utils/icons';
 
 
-const MusicPlayerBack = ({ audioRef, isPlaying, setIsPlaying, activeIndex, setActiveIndex, swiperRef,attributes }) => {
+const MusicPl = ({ audioRef, isPlaying, setIsPlaying, activeIndex, setActiveIndex, swiperRef,attributes }) => {
     const { musics,style } = attributes;
     const { bg,progressBg } = style.rangeInput;
     const [progress, setProgress] = useState(0);
@@ -58,11 +58,11 @@ const MusicPlayerBack = ({ audioRef, isPlaying, setIsPlaying, activeIndex, setAc
     };
 
     return <div className="music-player">
-        <h1 className='title' placeholder="Add Music Title...">{musics[activeIndex]?.title}</h1>
-        <p className='name' placeholder="Add Music Name...">{musics[activeIndex]?.name}</p>
+        <h1 className='title' placeholder="Add Music Title...">{musics[activeIndex].title}</h1>
+        <p className='name' placeholder="Add Music Name...">{musics[activeIndex].name}</p>
 
         <audio ref={audioRef} onTimeUpdate={updateProgress} onEnded={() => changeMusic('forward')} >
-            <source src={musics[activeIndex]?.source} type="audio/mpeg" />
+            <source src={musics[activeIndex].source} type="audio/mpeg" />
         </audio>
 
         <input
@@ -90,4 +90,4 @@ const MusicPlayerBack = ({ audioRef, isPlaying, setIsPlaying, activeIndex, setAc
     </div>
 }
 
-export default MusicPlayerBack
+export default MusicPl

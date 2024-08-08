@@ -33,7 +33,10 @@ const General = ({ attributes, setAttributes, setActiveIndex }) => {
 						onChange={(v) => updateMusic(setAttributes, setActiveIndex, musics, index, 'source', v)}
 					/>
 					<MediaUpload
-						onSelect={(v) => updateMusic(setAttributes, setActiveIndex, musics, index, 'source', v.url)}
+						onSelect={(v) => {
+							console.log(v)
+							updateMusic(setAttributes, setActiveIndex, musics, index, 'source', v.url)
+						}}
 						allowedTypes={['audio']}
 						render={({ open }) => (
 							<Button className='mediaBtn' onClick={open} icon={"upload f317"}></Button>

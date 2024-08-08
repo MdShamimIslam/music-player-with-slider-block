@@ -4,12 +4,12 @@ import { tabController } from '../../../../Components/utils/functions';
 import Style from '../Common/Style';
 import Settings from './Settings/Settings';
 import SwiperSlider from './SwiperSlider/SwiperSlider';
-import { musics } from '../../utils/options';
 import MusicPlayerBack from './MusicPlayerBack/MusicPlayerBack';
 import { withSelect } from '@wordpress/data';
 
 const Edit = props => {
-	const { attributes, setAttributes, clientId, isSelected,device } = props;
+	const { attributes, setAttributes, clientId, isSelected, device } = props;
+	const { musics } = attributes;
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [isPlaying, setIsPlaying] = useState(false);
 	const audioRef = useRef(null);
@@ -28,17 +28,15 @@ const Edit = props => {
 
 	return <>
 		<Settings
-			{...{ attributes, setAttributes,device }}
+			{...{ attributes, setAttributes, device }}
 			activeIndex={activeIndex}
 			setActiveIndex={setActiveIndex}
 		/>
 
 		<div {...useBlockProps()}>
-
 			<Style attributes={attributes} device={device} id={`block-${clientId}`} />
 
 			<div className="bBlocksMusicPlayer">
-				
 				<SwiperSlider
 					ref={swiperRef}
 					playTrack={playTrack}
@@ -47,7 +45,6 @@ const Edit = props => {
 
 				<MusicPlayerBack
 					attributes={attributes}
-					setAttributes={setAttributes}
 					audioRef={audioRef}
 					isPlaying={isPlaying}
 					setIsPlaying={setIsPlaying}

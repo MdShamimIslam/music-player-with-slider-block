@@ -1,7 +1,8 @@
 import { createRoot } from 'react-dom/client';
 import './style.scss';
 import Style from './Components/Common/Style';
-import MusicPlayer from './Components/Frontend/MusicPlayer';
+import MusicPlayerFront from './Components/Frontend/MusicPlayerFront/MusicPlayerFront';
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,12 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		const attributes = JSON.parse(musicPlayerEl.dataset.attributes);
 
 		createRoot(musicPlayerEl).render(<>
-			{/* style */}
+
 			<Style attributes={attributes} id={musicPlayerEl.id} />
-			{/* content */}
-			<div className='bBlocksMusicPlayer'>
-				<MusicPlayer attributes={attributes} />
-			</div>
+			
+			<MusicPlayerFront attributes={attributes} />
+
 		</>);
 
 		musicPlayerEl?.removeAttribute('data-attributes');

@@ -80,10 +80,7 @@
 }
 .wp-block-mpws-music-player .bBlocksMusicPlayer {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: inline-flex;
   background-repeat: no-repeat;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);

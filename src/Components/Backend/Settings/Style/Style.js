@@ -14,7 +14,7 @@ const Style = ({ attributes, setAttributes, device }) => {
     const { textSl, rangeSl } = options;
     const { align,musicSlider, musicTitle, musicName, rangeInput, rangeThumb } = style;
     const { sliderWidth, sliderHeight, border, overlayBg } = musicSlider;
-    const { width, height, bg, radius, margin, } = rangeInput;
+    const { width, height, bg,progressBg, radius, margin, } = rangeInput;
     const { thumbWidth, thumbBg, thumbShadow, thumbOutline, } = rangeThumb;
 
     return (
@@ -62,7 +62,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
             </PanelBody>
 
-            <PanelBody className='bPlPanelBody' title={__('Music Slider', 'music-player')}>
+            <PanelBody className='bPlPanelBody' title={__('Music Slider', 'music-player')} initialOpen={false} >
 
                 <PanelRow>
                     <Label>{__('Width', 'b-blocks')}</Label>
@@ -97,7 +97,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
             </PanelBody>
 
-            <PanelBody className='bPlPanelBody' title={__('Music Player', 'music-player')}>
+            <PanelBody className='bPlPanelBody' title={__('Music Player', 'music-player')} initialOpen={false}>
                 <Tab
                     options={["title", "name"]}
                     value={textSl}
@@ -150,9 +150,14 @@ const Style = ({ attributes, setAttributes, device }) => {
                 {rangeSl === 'input' ?
                     <>
                         <BColor
-                            label={__('Background', 'music-player')}
+                            label={__('Static Background', 'music-player')}
                             value={bg}
                             onChange={v => setAttributes({ style: updateData(style, v, 'rangeInput', "bg") })}
+                        />
+                        <BColor
+                            label={__('Progress Background', 'music-player')}
+                            value={progressBg}
+                            onChange={v => setAttributes({ style: updateData(style, v, 'rangeInput', "progressBg") })}
                         />
 
                         <PanelRow>
@@ -186,7 +191,7 @@ const Style = ({ attributes, setAttributes, device }) => {
                         />
 
                         <RangeControl
-                            title={__('Border radius', 'music-player')}
+                            label={__('Border radius', 'music-player')}
                             value={radius}
                             allowReset
                             onChange={v => setAttributes({ style: updateData(style, v, 'rangeInput', "radius") })}
