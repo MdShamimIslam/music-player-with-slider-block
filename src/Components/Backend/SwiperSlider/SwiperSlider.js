@@ -10,6 +10,7 @@ const SwiperSlider = forwardRef(({ playTrack, attributes }, ref) => {
   const { musics, options } = attributes;
   const [activeSlide, setActiveSlide] = useState(0);
   const swiperRef = useRef(null);
+ 
 
   useImperativeHandle(ref, () => ({
     slideTo(index) {
@@ -41,12 +42,17 @@ const SwiperSlider = forwardRef(({ playTrack, attributes }, ref) => {
         <SwiperSlide  key={index}>
           <div className={`${activeSlide === index ? 'activeSlide' : ''}`}>
             <img src={music.thumbnail.url} alt={music.title} />
-            {activeSlide === index && <div className="overlay">
+            {
+              options.isOverlayIcon && <>
+               {activeSlide === index && <div className="overlay">
               <span onClick={() => music.link ? window.open(`${music.link}`, options.newTab ? '_blank' : '_self') : {}} >
                 <FaYoutube style={{ color: "red", cursor: "pointer", width: "20px" }} className='youtubeIcon' />
               </span>
             </div>
             }
+              </>
+            }
+           
           </div>
         </SwiperSlide>
       ))}

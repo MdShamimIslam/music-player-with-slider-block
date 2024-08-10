@@ -19,7 +19,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
     return (
         <>
-            <PanelBody className='bPlPanelBody' title={__('Music Wrapper', 'music-player')}>
+            <PanelBody className='bPlPanelBody' title={__('Music Player Wrapper', 'music-player')}>
                 <PanelRow>
                     <Label>{__('Alignment', 'b-blocks')}</Label>
                     <Device />
@@ -100,7 +100,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
             <PanelBody className='bPlPanelBody' title={__('Music Player', 'music-player')} initialOpen={false}>
                 <Tab
-                    options={["title", "name"]}
+                    options={["title", "sub-title"]}
                     value={textSl}
                     onChange={v => setAttributes({ options: updateData(options, v, "textSl") })}
                 />
@@ -161,7 +161,7 @@ const Style = ({ attributes, setAttributes, device }) => {
                             onChange={v => setAttributes({ style: updateData(style, v, 'rangeInput', "progressBg") })}
                         />
                         <BColor
-                            label={__('Progress Time Background', 'music-player')}
+                            label={__('Progress Time Color', 'music-player')}
                             value={timeBg}
                             onChange={v => setAttributes({ style: updateData(style, v, 'rangeInput', "timeBg") })}
                         />

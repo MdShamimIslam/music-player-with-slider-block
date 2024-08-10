@@ -1,8 +1,8 @@
 $primaryColor: #4527a4;
 $primary-clr: rgba(228, 228, 229, 1);
 
-@use '../custom-scss/general';
-@use '../custom-scss/settingStyle';
+@use './custom-scss/general';
+@use './custom-scss/settingStyle';
 
 .wp-block-mpws-music-player {
 	* {
@@ -11,8 +11,7 @@ $primary-clr: rgba(228, 228, 229, 1);
 		box-sizing: border-box;
 	}
 
-	// keyFrames slideIn
-	@import '../custom-scss/keyFrames';
+	@import './custom-scss/keyFrames';
 
 	%ourBlocks{
 		position: relative;
@@ -31,16 +30,16 @@ $primary-clr: rgba(228, 228, 229, 1);
 		@extend %ourBlocks;
 
 		// Slide
-		@import '../custom-scss/swiperSlide';
+		@import './custom-scss/swiperSlide';
 
 		// Music Player
-		@import '../custom-scss/music';
+		@import './custom-scss/music';
 
 		// Progress
-		@import '../custom-scss/progress';
+		@import './custom-scss/progress';
 
 		// Controls
-		@import '../custom-scss/controlsBtn';
+		@import './custom-scss/controlsBtn';
 
 	}
 
