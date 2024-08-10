@@ -38,7 +38,7 @@ const SwiperSlider = forwardRef(({ playTrack, attributes }, ref) => {
       slidesPerView={5}
     >
       {musics.map((music, index) => (
-        <SwiperSlide key={index}>
+        <SwiperSlide  key={index}>
           <div className={`${activeSlide === index ? 'activeSlide' : ''}`}>
             <img src={music.thumbnail.url} alt={music.title} />
             {activeSlide === index && <div className="overlay">

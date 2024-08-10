@@ -37,52 +37,61 @@
 			"type": "object",
 			"default": {
 				"newTab": true,
-				"textSl":"title",
-				"rangeSl":"input"
+				"isThumb": true,
+				"textSl": "title",
+				"rangeSl": "input"
 			}
 		},
 		"style": {
 			"type": "object",
 			"default": {
-				"align":{
+				"align": {
 					"desktop": "start",
 					"tablet": "start",
 					"mobile": "start"
 				},
-				"width":{
+				"width": {
 					"desktop": "",
 					"tablet": "",
 					"mobile": ""
 				},
-				"height":{
+				"height": {
 					"desktop": "",
 					"tablet": "",
 					"mobile": ""
 				},
-				"border":{"radius":"5px"},
-				"bg":"#604ca1",
-				"musicSlider":{
-					"sliderWidth":{
+				"border": {
+					"radius": "5px"
+				},
+				"bg": "#604ca1",
+				"musicSlider": {
+					"sliderWidth": {
 						"desktop": "100px",
 						"tablet": "80px",
 						"mobile": "70px"
 					},
-					"sliderHeight":{
+					"sliderHeight": {
 						"desktop": "80px",
 						"tablet": "60px",
 						"mobile": "40px"
 					},
-					"border":{"radius":"5px"},
-					"overlayBg":"rgba(28, 22, 37, 0.6)"
+					"border": {
+						"radius": "5px"
+					},
+					"overlayBg": "rgba(28, 22, 37, 0.6)"
 				},
-				"musicTitle":{
-					"color":"#fff",
-					"typo":{"fontSize": 30}
+				"musicTitle": {
+					"color": "#fff",
+					"typo": {
+						"fontSize": 30
+					}
 				},
-				"musicName":{
-					"color":"#ddd",
-					"opacity":0.6,
-					"typo":{"fontSize": 20}
+				"musicName": {
+					"color": "#ddd",
+					"opacity": 0.6,
+					"typo": {
+						"fontSize": 20
+					}
 				},
 				"rangeInput": {
 					"width": {
@@ -96,14 +105,20 @@
 						"mobile": "6px"
 					},
 					"margin": {
-						"desktop": {"top":"30px"},
-						"tablet": {"top":"25px"},
-						"mobile": {"top":"20px"}
+						"desktop": {
+							"top": "30px"
+						},
+						"tablet": {
+							"top": "25px"
+						},
+						"mobile": {
+							"top": "20px"
+						}
 					},
 					"radius": 4,
 					"bg": "#FFFFFF5E",
 					"progressBg": "green",
-					"timeBg":"white"
+					"timeBg": "white"
 				},
 				"rangeThumb": {
 					"thumbWidth": {
@@ -113,16 +128,29 @@
 					},
 					"thumbBg": "rgba(89, 26, 151, 0.9)",
 					"thumbShadow": [],
-					"thumbOutline": {"width":"4px","style":"solid", "color":"white", "radius":"50%"}
+					"thumbOutline": {
+						"width": "4px",
+						"style": "solid",
+						"color": "white",
+						"radius": "50%"
+					}
 				},
-				"controlsBtn":{
-					"width":{
+				"controlsBtn": {
+					"width": {
 						"desktop": "50px",
 						"tablet": "45px",
 						"mobile": "40px"
 					},
-					"colors":{"color":"white","bg":"rgba(163, 162, 164, 0.3)"},
-					"border":{"width":"1px","style":"solid","color":"rgba(255, 255, 255, 0.3)","radius":"50%"}
+					"colors": {
+						"color": "white",
+						"bg": "rgba(163, 162, 164, 0.3)"
+					},
+					"border": {
+						"width": "1px",
+						"style": "solid",
+						"color": "rgba(255, 255, 255, 0.3)",
+						"radius": "50%"
+					}
 				}
 			}
 		}
@@ -138,12 +166,8 @@
 		"attributes": {}
 	},
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./style-index.css",
-	"style": "file:./style-view.css",
+	"editorStyle": "file:./index.css",
+	"style": "file:./view.css",
 	"render": "file:./render.php",
-	"viewScript": [
-		"file:./view.js",
-		"react",
-		"react-dom"
-	]
+	"viewScript": "file:./view.js"
 }

@@ -1,7 +1,7 @@
 import { getBorderCSS,getBoxCSS, getMultiShadowCSS,getTypoCSS,getColorsCSS } from '../../../../Components/utils/getCSS';
 
 const Style = ({ attributes, id, device = "desktop" }) => {
-	const { style } = attributes;
+	const { style,options } = attributes;
 	const {align,musicSlider, musicTitle, musicName, rangeInput, rangeThumb,controlsBtn } = style;
 	const { sliderWidth, sliderHeight, border, overlayBg} = musicSlider;
 	const { width, height, radius, margin,timeBg } = rangeInput;
@@ -70,20 +70,23 @@ const Style = ({ attributes, id, device = "desktop" }) => {
 					margin: ${getBoxCSS(margin[device])};
 				}
 
-				${rangeThumbSl} {
-					background:${thumbBg};
-					width:${thumbWidth[device]};
-					border-radius:${thumbOutline.radius};
-					box-shadow: ${getMultiShadowCSS(thumbShadow)};
-					outline: ${thumbOutline.width} ${thumbOutline.style} ${thumbOutline.color};
-				}
-
 				${controlsBtnSl} {
 					width:${controlsBtn.width[device]};
 					${getBorderCSS(controlsBtn.border)}
 					${getColorsCSS(controlsBtn.colors)}
-
 				}
+
+				${options.isThumb && 
+					`
+					  ${rangeThumbSl} {
+						background:${thumbBg};
+						width:${thumbWidth[device]};
+						border-radius:${thumbOutline.radius};
+						box-shadow: ${getMultiShadowCSS(thumbShadow)};
+						outline: ${thumbOutline.width} ${thumbOutline.style} ${thumbOutline.color};
+				      }
+					`
+				};
 
 				@media only screen and (min-width:641px) and (max-width: 1024px){
 					${mainSl}{

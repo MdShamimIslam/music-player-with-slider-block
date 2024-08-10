@@ -24,7 +24,7 @@ const General = ({ attributes, setAttributes, setActiveIndex }) => {
 					value={music.name}
 					onChange={(v) => updateMusic(setAttributes, setActiveIndex, musics, index, 'name', v)}
 				/>
-				
+
 				<div className='thumbnail'>
 					<TextControl
 						label={__('Source', 'music-player')}
@@ -33,7 +33,7 @@ const General = ({ attributes, setAttributes, setActiveIndex }) => {
 						onChange={(v) => updateMusic(setAttributes, setActiveIndex, musics, index, 'source', v)}
 					/>
 					<MediaUpload
-						onSelect={(v) => 
+						onSelect={(v) =>
 							updateMusic(setAttributes, setActiveIndex, musics, index, 'source', v.url)
 						}
 						allowedTypes={['audio']}
@@ -69,6 +69,12 @@ const General = ({ attributes, setAttributes, setActiveIndex }) => {
 					label={__('Open in New Tab', 'music-player')}
 					onChange={(v) => setAttributes({ options: updateData(options, v, 'newTab') })}
 				/>}
+				<ToggleControl
+					className='mt5'
+					checked={options.isThumb}
+					label={__('Show Range Thumb', 'music-player')}
+					onChange={(v) => setAttributes({ options: updateData(options, v, 'isThumb') })}
+				/>
 
 				{musics.length > 1 ? <div className='removeAndDuplicateBtn mt10' >
 					<Button
