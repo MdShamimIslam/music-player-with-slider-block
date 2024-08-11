@@ -107,13 +107,13 @@
 					},
 					"margin": {
 						"desktop": {
-							"top": "30px"
+							"top": "15px"
 						},
 						"tablet": {
-							"top": "25px"
+							"top": "10px"
 						},
 						"mobile": {
-							"top": "20px"
+							"top": "7px"
 						}
 					},
 					"radius": 4,
