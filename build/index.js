@@ -11558,7 +11558,9 @@ const Style = ({
     defaults: {
       fontSize: 20
     }
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Panel_Tab_Tab__WEBPACK_IMPORTED_MODULE_7__.Tab, {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "mt5"
+  }, "For Range of Progress "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Panel_Tab_Tab__WEBPACK_IMPORTED_MODULE_7__.Tab, {
     options: ["Input", "Thumb"],
     value: rangeSl,
     onChange: v => setAttributes({

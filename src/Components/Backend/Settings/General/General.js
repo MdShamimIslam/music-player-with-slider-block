@@ -3,7 +3,8 @@ import { __ } from '@wordpress/i18n';
 import { PanelBody, TextControl, Button, ToggleControl } from '@wordpress/components';
 import { MediaUpload } from "@wordpress/block-editor";
 import { BiPlusMedical } from '../../../../utils/icons';
-import { addNewMusic, duplicateMusic, removeMusic, updateData, updateMusic } from '../../../../utils/functions';
+import { addNewMusic, duplicateMusic, removeMusic, updateData,updateMusic } from '../../../../utils/functions';
+
 
 const General = ({ attributes, setAttributes, setActiveIndex }) => {
 	const { musics, options } = attributes;
@@ -34,9 +35,7 @@ const General = ({ attributes, setAttributes, setActiveIndex }) => {
 							onChange={(v) => updateMusic(setAttributes, setActiveIndex, musics, index, 'source', v)}
 						/>
 						<MediaUpload
-							onSelect={(v) =>
-								updateMusic(setAttributes, setActiveIndex, musics, index, 'source', v.url)
-							}
+							onSelect={(v) => updateMusic(setAttributes, setActiveIndex, musics, index, 'source', v.url)}
 							allowedTypes={['audio']}
 							render={({ open }) => (
 								<Button className='mediaBtn' onClick={open} icon={"upload f317"}></Button>
@@ -111,7 +110,7 @@ const General = ({ attributes, setAttributes, setActiveIndex }) => {
 
 		</PanelBody>
 
-		<PanelBody className='bPlPanelBody' title={__( 'Music Options', 'music-player')} initialOpen={false}>
+		<PanelBody className='bPlPanelBody' title={__('Music Options', 'music-player')} initialOpen={false}>
 			<ToggleControl
 				className='mt5'
 				checked={options.isOverlayIcon}

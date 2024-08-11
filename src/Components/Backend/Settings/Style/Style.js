@@ -143,6 +143,7 @@ const Style = ({ attributes, setAttributes, device }) => {
 
                     </>
                 }
+                <p className='mt5'>For Range of Progress </p>
                 <Tab
                     options={["Input", "Thumb"]}
                     value={rangeSl}
